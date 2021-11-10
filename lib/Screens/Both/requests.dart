@@ -14,8 +14,14 @@ class Requests extends StatefulWidget {
 
 class _RequestsState extends State<Requests> {
   ScrollController _scrollBottomBarController = new ScrollController();
-  int _value = 1;
+  List<String> methodOfPayment = ["Cash","Mobile Money","Bundle"];
+  String radioButtonItem = "Cash";
+  int id = 1;
+
+  int _value20 = 1;
+  int _value00 = 1;
   bool seeTextBox = false;
+  bool seeProfileLink = false;
 
 
   Widget containerContent(int name, int date, int time, int amount,bool cancelled){
@@ -26,7 +32,7 @@ class _RequestsState extends State<Requests> {
       width: MediaQuery.of(context).size.width - 100,
     child: InkWell(
     onTap: () {
-    jobDetails(context,name, date, time, amount);
+      pendingJobsDetails(context,name, date, time, amount);
     },
       child: Align(
         alignment: Alignment.centerLeft,
@@ -184,7 +190,7 @@ class _RequestsState extends State<Requests> {
     );
 
   }
-  void jobDetails(context,int name, int date, int time, int amount) {// this is the start of the bottom sheet
+  void completedJobsDetails(context,int name, int date, int time, int amount) {// this is the start of the bottom sheet
     showModalBottomSheet(context: context, builder: (BuildContext bc,) {
       return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
@@ -358,7 +364,7 @@ class _RequestsState extends State<Requests> {
                   alignedDropdown: true,
                   child:DropdownButton(
                     isExpanded: true,
-                    value: _value,
+                    value: _value20,
                     items: [
                       DropdownMenuItem(
                         child: Text("Select the issue you have with this job"),
@@ -379,8 +385,8 @@ class _RequestsState extends State<Requests> {
                     ],
                     onChanged: (int? value) {
                       setState(() {
-                        _value = value!;
-                        if (_value==4){
+                        _value20 = value!;
+                        if (_value20==4){
                           seeTextBox = true;}
                         else{
                           seeTextBox = false;}
@@ -408,8 +414,8 @@ class _RequestsState extends State<Requests> {
                             fontFamily: textFont,
                             fontSize: textFieldSize,
                           ),
-                          showCursor: false,
-                          //cursorColor: Colors.blue,
+                          showCursor: true,
+                          cursorColor: Colors.black,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                           ),
@@ -447,6 +453,370 @@ class _RequestsState extends State<Requests> {
             ]
           )
         );
+          });
+    },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(bottonSheetRadius),
+      ),
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+    );
+  }
+
+  void pendingJobsDetails(context,int name, int date, int time, int amount) {// this is the start of the bottom sheet
+    showModalBottomSheet(context: context, builder: (BuildContext bc,) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
+            return Container(
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * .90,
+                child: ListView(
+                    controller: _scrollBottomBarController,
+                    children: <Widget>[
+                      Align(
+                        alignment : Alignment.centerLeft,
+                        child:IconButton(
+                          icon: Icon(Icons.clear_outlined, color: Colors.black,
+                              size: cancelIconSize),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(height:25),
+                      Container (
+                        margin: const EdgeInsets.only(left:20,right: 20),
+                        child:Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(nameOfJobs[name],
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontSize: jobDetailsTitleSize,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              Text(dates[date]+", "+times[time],
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontSize: listBottomStringsSize,//forgotPasswordSize,
+                                  )),
+                            ]
+                        ),
+                      ),
+                      SizedBox(height:10),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child:Container (
+                            margin: const EdgeInsets.only(left:20,right: 20,bottom:15),
+                            child:Text(longSentence,
+                                style: TextStyle(
+                                  fontFamily: textFont,
+                                  fontSize: listBottomStringsSize,//forgotPasswordSize,
+                                )),)),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child:Container (
+                            margin: const EdgeInsets.only(left:20,right: 20,bottom:20),
+                            child:Text("Service Fee:" + " "+"GH₵ 100.00",
+                                style: TextStyle(
+                                  fontFamily: textFont,
+                                  fontSize: forgotPasswordSize,//forgotPasswordSize,
+                                )),)),
+                      Container(
+                          height:5,
+                          color: textfieldColor
+                      ),
+                      SizedBox(height:35),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left:20,right: 20),
+                              child: Text(handymen,
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: textFieldSize,
+                                  )))),
+                      SizedBox(height:15),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left: 20,right:20,bottom:100),
+                              child: ButtonTheme(
+                                alignedDropdown: true,
+                                child:DropdownButton(
+                                  isExpanded: true,
+                                  value: _value00,
+                                  items: [
+                                    DropdownMenuItem(
+                                      child: Text("Select the handyman of your choice"),
+                                      value: 1,
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("handyman 1"+","+" bid"),
+                                      value: 2,
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("handyman 2"+","+" bid"),
+                                      value: 3,
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text("handyman 3"+","+" bid"),
+                                      value: 4,
+                                    )
+                                  ],
+                                  onChanged: (int? value) {
+                                    setState(() {
+                                      _value00 = value!;
+                                      if (_value00!=1){
+                                        seeProfileLink = true;}
+                                      else{
+                                        seeProfileLink = false;}
+                                    });
+                                  },
+                                ),
+
+                              ))),
+                      Visibility(
+                        visible: seeProfileLink,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            margin: const EdgeInsets.only(right:30,bottom:10),
+                            child: Text("Visit handyman $_value00's profile page",
+                                style: TextStyle(
+                                  fontFamily: textFont,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: blueGrey3,
+                                )
+                            ),))
+                      ),
+
+                      Container(
+                          height:5,
+                          color: textfieldColor
+                      ),
+                      SizedBox(height:35),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left:20,right: 20,bottom:15),
+                              child: Text(finalisePrice,
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: textFieldSize,
+                                  )))),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          margin: const EdgeInsets.only(left:30,right:30,bottom:10),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(serviceFee+":",
+                              style: TextStyle(
+                                fontFamily: textFont,
+                                fontSize: forgotPasswordSize,
+                              )),
+                              Container(
+                                height:30,
+                                width: 100,
+                                child: Padding(padding: EdgeInsets.only(left:10,right:10),
+                                  child: TextField(
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: textFont,
+                                      fontSize: textFieldSize,
+                                    ),
+                                    showCursor: true,
+                                    cursorColor: Colors.black,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.black45,
+                                  ),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              )
+                            ]
+                          )
+                        )
+                      ),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left:30, right:30,bottom:10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(otherCost+":",
+                                        style: TextStyle(
+                                          fontFamily: textFont,
+                                          fontSize: forgotPasswordSize,
+                                        )),
+                                    Container(
+                                      height:30,
+                                      width: 100,
+                                      child: Padding(padding: EdgeInsets.only(left:10,right:10,),
+                                        child: TextField(
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: textFont,
+                                            fontSize: textFieldSize,
+                                          ),
+                                          showCursor: true,
+                                          cursorColor: Colors.black,
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      ),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.black45,
+                                        ),
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                    )
+                                  ]
+                              )
+                          )
+                      ),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left:30, right:40,bottom:10),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(total+":",
+                                        style: TextStyle(
+                                          fontFamily: textFont,
+                                          fontSize: forgotPasswordSize,
+                                        )),
+                                    Text("GH₵ 100.00",
+                                        style: TextStyle(
+                                          fontFamily: textFont,
+                                          fontSize: forgotPasswordSize,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                  ]
+                              ))
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left:10.0),
+                        child:Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Radio(
+                              value: 1,
+                              groupValue: id,
+                              onChanged: (val) {
+                                setState(() {
+                                  radioButtonItem = methodOfPayment[0];
+                                  id = 1;
+                                });
+                              },
+                            ),
+                            Text(
+                              methodOfPayment[0],
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontFamily: textFont,
+                                fontSize: textFieldSize,
+                              ),),
+
+                            Radio(
+                              value: 2,
+                              groupValue: id,
+                              onChanged: (val) {
+                                setState(() {
+                                  radioButtonItem = methodOfPayment[1];
+                                  id = 2;
+                                });
+                              },
+                            ),
+                            Text(
+                              methodOfPayment[1],
+                              style:  TextStyle(
+                                color: Colors.black54,
+                                fontFamily: textFont,
+                                fontSize: textFieldSize,
+                              ),),
+
+                            Radio(
+                              value: 3,
+                              groupValue: id,
+                              onChanged: (val) {
+                                setState(() {
+                                  radioButtonItem = methodOfPayment[2];
+                                  id = 3;
+                                });
+                              },
+                            ),
+                            Text(
+                              methodOfPayment[2],
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontFamily: textFont,
+                                fontSize: textFieldSize,
+                              ),),
+                          ],
+                        ),),
+
+                      SizedBox(height: 10),
+                      SizedBox(height: 10),
+                      Container(
+                        margin: const EdgeInsets.only(left:30, right: 20),
+                        child:Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width:200,
+                                child:FloatingActionButton.extended(
+                                    backgroundColor: blueGrey3,
+                                    foregroundColor: Colors.white,
+                                    onPressed: () {
+                                      // Respond to button press
+                                    },
+                                    label:Text("START JOB")
+                                ),
+                              ),
+                              Container(
+                                width:120,
+                                child:FloatingActionButton.extended(
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
+                                  onPressed: () {
+                                    // Respond to button press
+                                  },
+                                  label: Row(
+                                    children: <Widget>[Text("DELETE"), SizedBox(width:5),Icon(Icons.delete_forever)],
+                                  ),),
+                              )
+                            ]
+                        ),
+                      ),
+
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      // listContainer(),
+
+                    ]
+                )
+            );
           });
     },
       shape: RoundedRectangleBorder(
