@@ -1,14 +1,10 @@
-
-
 import 'package:beta_hustle/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:beta_hustle/constants.dart';
-//import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-
-
 import '../../strings.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -99,7 +95,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -133,7 +129,7 @@ class _LoginState extends State<Login> {
                     style: TextStyle(
                       color: Colors.black,
                       fontFamily: textFont,
-                      fontSize: textfieldSize,
+                      fontSize: textFieldSize,
                     ),
                     showCursor: true,
                     cursorColor: Colors.blue,
@@ -219,7 +215,7 @@ class _LoginState extends State<Login> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: textFont,
-                                fontSize: textfieldSize,
+                                fontSize: textFieldSize,
                                 fontWeight: FontWeight.normal
                             ),
                           ),
@@ -232,7 +228,7 @@ class _LoginState extends State<Login> {
                                 style: TextStyle(
                                     color: green,//Colors.blue,
                                     fontFamily: textFont,
-                                    fontSize: textfieldSize,
+                                    fontSize: textFieldSize,
                                     fontWeight: FontWeight.bold
                                 ),
                               )
@@ -260,7 +256,7 @@ class _LoginState extends State<Login> {
 
     ));
   }
-  void _signUp(context) {
+  void _signUp(context) { // this is the start of the bottom sheet
     showModalBottomSheet(context: context,builder: (BuildContext bc) {
       return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
@@ -312,7 +308,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -339,7 +335,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -364,7 +360,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -388,7 +384,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -413,7 +409,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -454,7 +450,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),
                       showCursor: true,
                       cursorColor: Colors.blue,
@@ -519,7 +515,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black54,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),),
 
                     Radio(
@@ -537,7 +533,7 @@ class _LoginState extends State<Login> {
                       style:  TextStyle(
                         color: Colors.black54,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),),
 
                     Radio(
@@ -555,7 +551,7 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.black54,
                         fontFamily: textFont,
-                        fontSize: textfieldSize,
+                        fontSize: textFieldSize,
                       ),),
                   ],
                 ),),
