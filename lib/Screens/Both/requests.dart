@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:beta_hustle/colors.dart';
-import 'package:beta_hustle/constants.dart';
+import '/colors.dart';
+import '/constants.dart';
 import 'package:flutter/rendering.dart';
 import '../../strings.dart';
-import 'package:beta_hustle/lists.dart';
+import '/lists.dart';
 
 class Requests extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class Requests extends StatefulWidget {
 
 class _RequestsState extends State<Requests> {
   ScrollController _scrollBottomBarController = new ScrollController();
-  List<String> methodOfPayment = ["Cash","Mobile Money","Bundle"];
+  List<String> methodOfPayment = ["Cash","Momo","Bundle"];
   String radioButtonItem = "Cash";
   int id = 1;
 
@@ -777,12 +777,12 @@ class _RequestsState extends State<Requests> {
                       SizedBox(height: 10),
                       SizedBox(height: 10),
                       Container(
-                        margin: const EdgeInsets.only(left:30, right: 20),
+                        margin: const EdgeInsets.only(left:10, right: 10),
                         child:Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width:200,
+                                width:135,
                                 child:FloatingActionButton.extended(
                                     backgroundColor: blueGrey3,
                                     foregroundColor: Colors.white,
@@ -793,7 +793,7 @@ class _RequestsState extends State<Requests> {
                                 ),
                               ),
                               Container(
-                                width:120,
+                                width:135,
                                 child:FloatingActionButton.extended(
                                   backgroundColor: Colors.red,
                                   foregroundColor: Colors.white,
