@@ -32,7 +32,7 @@ class _RequestsState extends State<Requests> {
       width: MediaQuery.of(context).size.width - 100,
     child: InkWell(
     onTap: () {
-      pendingJobsDetails(context,name, date, time, amount);
+      ongoingJobsDetails(context,name, date, time, amount);
     },
       child: Align(
         alignment: Alignment.centerLeft,
@@ -826,5 +826,235 @@ class _RequestsState extends State<Requests> {
       isScrollControlled: true,
     );
   }
+
+
+  void ongoingJobsDetails(context,int name, int date, int time, int amount) {// this is the start of the bottom sheet
+    showModalBottomSheet(context: context, builder: (BuildContext bc,) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
+            return Container(
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * .90,
+                child: ListView(
+                    controller: _scrollBottomBarController,
+                    children: <Widget>[
+                      Align(
+                        alignment : Alignment.centerLeft,
+                        child:IconButton(
+                          icon: Icon(Icons.clear_outlined, color: Colors.black,
+                              size: cancelIconSize),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                      SizedBox(height:25),
+                      Container (
+                        margin: const EdgeInsets.only(left:20,right: 20),
+                        child:Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(nameOfJobs[name],
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontSize: jobDetailsTitleSize,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              Text(dates[date]+", "+times[time],
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontSize: listBottomStringsSize,//forgotPasswordSize,
+                                  )),
+                            ]
+                        ),
+                      ),
+                      SizedBox(height:10),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child:Container (
+                            margin: const EdgeInsets.only(left:20,right: 20,bottom:35),
+                            child:Text(longSentence,
+                                style: TextStyle(
+                                  fontFamily: textFont,
+                                  fontSize: listBottomStringsSize,//forgotPasswordSize,
+                                )),)),
+                      Container(
+                          margin: const EdgeInsets.only(left:20,right: 20),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:[
+                                Text(serviceFee,
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                    )),
+                                Text("GH₵ 75.00",
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                    )
+                                ),
+                              ]
+                          )),
+                      SizedBox(height:7),
+                      Container(
+                          margin: const EdgeInsets.only(left:20,right: 20),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:[
+                                Text(otherCost,
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                    )),
+                                Text("GH₵ 100.00",
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                    )
+                                ),
+                              ]
+                          )),
+                      SizedBox(height:4),
+                      Container(
+                        margin: const EdgeInsets.only(left:18,right: 18),
+                          width: 200,
+                          height:1,
+                          color: textfieldColor
+                      ),
+                      SizedBox(height:4),
+                      Container(
+                          margin: const EdgeInsets.only(left:20,right: 20,bottom: 30),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children:[
+                                Text("Method of Payment",
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                    )),
+                                Text("GH₵ 175.00",
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: listBottomStringsSize,
+                                      fontWeight: FontWeight.bold,
+                                    )
+                                ),
+                              ]
+                          )),
+                      Container(
+                          height:5,
+                          color: textfieldColor
+                      ),
+                      SizedBox(height:35),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                              margin: const EdgeInsets.only(left:20,right: 20),
+                              child: Row(
+                                children: [
+                                  Text("Contact ",
+                                  style: TextStyle(
+                                    fontFamily: textFont,
+                                    fontSize: textFieldSize,
+                                  )),
+                                  Text("Name of Handyman",
+                                      style: TextStyle(
+                                        fontFamily: textFont,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: textFieldSize,
+                                      )),
+                                ]
+                              ))),
+                      SizedBox(height:15),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
+                          margin: const EdgeInsets.only(left:40,right: 20,bottom: 80),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 120,
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: NetworkImage('https://googleflutter.com/sample_image.jpg'),
+                                      fit: BoxFit.fill
+                                  ),
+                                ),),
+                              SizedBox(width: 100),
+                              Column(
+                                children:[
+                                  Container(
+                                    //width:120,
+                                    child:FloatingActionButton.extended(
+                                        backgroundColor: blueGrey3,
+                                        foregroundColor: Colors.white,
+                                        onPressed: () {
+                                          // Respond to button press
+                                        },
+                                      label: Icon(Icons.message_outlined),
+                                      ),
+                                    ),
+                                  SizedBox(height: 15),
+                                  Container(
+                                    //width:100,
+                                    child:FloatingActionButton.extended(
+                                      backgroundColor: blueGrey3,
+                                      foregroundColor: Colors.white,
+                                      onPressed: () {
+                                        // Respond to button press
+                                      },
+                                      label: Icon(Icons.call),
+                                    ),
+                                  )
+
+
+                                ]
+                              ),
+                            ]
+                          )
+                      )),
+                      Align(
+                        alignment: Alignment.center,
+                          child:Container(
+                            width:350,
+                            child:FloatingActionButton.extended(
+                              backgroundColor: Colors.red,
+                              foregroundColor: Colors.white,
+                              onPressed: () {
+                                // Respond to button press
+                              },
+                              label: Text("CANCEL JOB"),
+                            ),
+                          )
+
+
+                      ),
+
+
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      SizedBox(height: 50),
+                      // listContainer(),
+
+                    ]
+                )
+            );
+          });
+    },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(bottonSheetRadius),
+      ),
+      backgroundColor: Colors.white,
+      isScrollControlled: true,
+    );
+  }
+
+
 }
 
