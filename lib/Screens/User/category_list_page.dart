@@ -254,12 +254,7 @@ Color color5=Colors.blueGrey;
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.blueGrey.shade900,
-                    boxShadow: [
-                      BoxShadow(blurRadius: 20,color: Colors.black.withOpacity(0.2),
-                          offset: Offset.zero
-                      ),
-
-                    ]
+                    
 
                 ),
 
@@ -270,144 +265,170 @@ Color color5=Colors.blueGrey;
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      child: IconButton(
+                      child: Material(
+                        color: Colors.blueGrey.shade900,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50.0)),
+                        child: IconButton(
 
-                        icon: Icon(
-                          icon1,
-                          color: color1,),
-                        onPressed: (){
+                          icon: Icon(
+                            icon1,
+                            color: color1,),
+                          onPressed: (){
 
+
+                              setState(() {
+                                currentIndex=1;
+                                if (currentIndex==1){
+
+                                  icon1=Icons.home;
+                                  icon2= Icons.favorite_outline;
+                                  icon3= Icons.add_box;
+                                  icon4=Icons.history;
+                                  icon5=Icons.settings_outlined;
+                                  color1= Colors.white;
+                                  color2 = Colors.blueGrey;
+                                  color3=Colors.blueGrey;
+                                  color4=Colors.blueGrey;
+                                  color5=Colors.blueGrey;
+                                }
+                              });
+
+
+
+                            Job.mainListNav.currentState?.pushReplacementNamed('/homepage');
+
+                          },
+
+                        ),
+                      ),
+
+                    ),
+                    Container(
+                      child: Material(
+                        color: Colors.blueGrey.shade900,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: IconButton(
+                          icon: Icon(
+                            icon2,
+                            color: color2,
+                          ),
+                          onPressed: (){
+
+
+                              setState(() {
+                                currentIndex=2;
+                                if (currentIndex==2){
+                                  icon1=Icons.home_outlined;
+                                  icon2= Icons.favorite;
+                                  icon3= Icons.add_box;
+                                  icon4=Icons.history;
+                                  icon5=Icons.settings_outlined;
+                                  color1= Colors.blueGrey;
+                                  color2 = Colors.white;
+                                  color3=Colors.blueGrey;
+                                  color4=Colors.blueGrey;
+                                  color5=Colors.blueGrey;
+                                }
+                              });
+
+
+                            Job.mainListNav.currentState?.pushReplacementNamed('/favoritespage');
+                          },
+
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Material(
+                        color: Colors.blueGrey.shade900,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: IconButton(
+                          icon: Icon(icon3,
+                            color: color3,),
+                          onPressed: (){
 
                             setState(() {
-                              currentIndex=1;
-                              if (currentIndex==1){
-
-                                icon1=Icons.home;
+                              currentIndex=3;
+                              if (currentIndex==3){
+                                icon1=Icons.home_outlined;
                                 icon2= Icons.favorite_outline;
                                 icon3= Icons.add_box;
                                 icon4=Icons.history;
                                 icon5=Icons.settings_outlined;
-                                color1= Colors.white;
+                                color1= Colors.blueGrey;
                                 color2 = Colors.blueGrey;
-                                color3=Colors.blueGrey;
+                                color3=Colors.white;
                                 color4=Colors.blueGrey;
                                 color5=Colors.blueGrey;
                               }
                             });
+                            Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
+                          },
 
-
-
-                          Job.mainListNav.currentState?.pushReplacementNamed('/homepage');
-
-                        },
-
+                        ),
                       ),
-
                     ),
                     Container(
-                      child: IconButton(
-                        icon: Icon(
-                          icon2,
-                          color: color2,
-                        ),
-                        onPressed: (){
-
-
+                      child: Material(
+                        color: Colors.blueGrey.shade900,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: IconButton(
+                          icon: Icon(icon4,color: color4),
+                          onPressed: (){
                             setState(() {
-                              currentIndex=2;
-                              if (currentIndex==2){
+                              currentIndex=4;
+                              if (currentIndex==4){
                                 icon1=Icons.home_outlined;
-                                icon2= Icons.favorite;
+                                icon2= Icons.favorite_outline;
                                 icon3= Icons.add_box;
                                 icon4=Icons.history;
                                 icon5=Icons.settings_outlined;
                                 color1= Colors.blueGrey;
-                                color2 = Colors.white;
+                                color2 = Colors.blueGrey;
                                 color3=Colors.blueGrey;
-                                color4=Colors.blueGrey;
+                                color4= Colors.white;
                                 color5=Colors.blueGrey;
                               }
                             });
+                            Job.mainListNav.currentState?.pushReplacementNamed('/requestpage');
+                          },
 
-
-                          Job.mainListNav.currentState?.pushReplacementNamed('/favoritespage');
-                        },
-
+                        ),
                       ),
                     ),
                     Container(
-                      child: IconButton(
-                        icon: Icon(icon3,
-                          color: color3,),
-                        onPressed: (){
+                      child: Material(
+                        color: Colors.blueGrey.shade900,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50.0)),
+                        child: IconButton(
 
-                          setState(() {
-                            currentIndex=3;
-                            if (currentIndex==3){
-                              icon1=Icons.home_outlined;
-                              icon2= Icons.favorite_outline;
-                              icon3= Icons.add_box;
-                              icon4=Icons.history;
-                              icon5=Icons.settings_outlined;
-                              color1= Colors.blueGrey;
-                              color2 = Colors.blueGrey;
-                              color3=Colors.white;
-                              color4=Colors.blueGrey;
-                              color5=Colors.blueGrey;
-                            }
-                          });
-                          Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
-                        },
+                          icon: Icon(icon5,color: color5,),
+                          onPressed: (){
+                            setState(() {
+                              currentIndex=5;
+                              if (currentIndex==5){
+                                icon1=Icons.home_outlined;
+                                icon2= Icons.favorite_outline;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings;
+                                color1= Colors.blueGrey;
+                                color2 = Colors.blueGrey;
+                                color3=Colors.blueGrey;
+                                color4= Colors.blueGrey;
+                                color5=Colors.white;
+                              }
+                            });
 
-                      ),
-                    ),
-                    Container(
-                      child: IconButton(
-                        icon: Icon(icon4,color: color4),
-                        onPressed: (){
-                          setState(() {
-                            currentIndex=4;
-                            if (currentIndex==4){
-                              icon1=Icons.home_outlined;
-                              icon2= Icons.favorite_outline;
-                              icon3= Icons.add_box;
-                              icon4=Icons.history;
-                              icon5=Icons.settings_outlined;
-                              color1= Colors.blueGrey;
-                              color2 = Colors.blueGrey;
-                              color3=Colors.blueGrey;
-                              color4= Colors.white;
-                              color5=Colors.blueGrey;
-                            }
-                          });
-                          Job.mainListNav.currentState?.pushReplacementNamed('/requestpage');
-                        },
+                            Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
+                          },
 
-                      ),
-                    ),
-                    Container(
-                      child: IconButton(
-                        icon: Icon(icon5,color: color5,),
-                        onPressed: (){
-                          setState(() {
-                            currentIndex=5;
-                            if (currentIndex==5){
-                              icon1=Icons.home_outlined;
-                              icon2= Icons.favorite_outline;
-                              icon3= Icons.add_box;
-                              icon4=Icons.history;
-                              icon5=Icons.settings;
-                              color1= Colors.blueGrey;
-                              color2 = Colors.blueGrey;
-                              color3=Colors.blueGrey;
-                              color4= Colors.blueGrey;
-                              color5=Colors.white;
-                            }
-                          });
-
-                          Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
-                        },
-
+                        ),
                       ),
                     ),
 
