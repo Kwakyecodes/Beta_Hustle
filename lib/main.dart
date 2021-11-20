@@ -1,7 +1,6 @@
-//import 'package:beta_hustle/Screens/Both/login.dart';
 import 'package:beta_hustle/Screens/Both/login.dart';
+import 'package:beta_hustle/Screens/User/pushrequests.dart';
 import 'package:flutter/material.dart';
-
 import 'Screens/Both/requests.dart';
 
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Beta Hustle',
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: Requests(),
+      home: PushRequests(),
 
     );
   }

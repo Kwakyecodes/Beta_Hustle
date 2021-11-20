@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:beta_hustle/colors.dart';
 import 'package:beta_hustle/constants.dart';
@@ -32,7 +30,7 @@ class _RequestsState extends State<Requests> {
       width: MediaQuery.of(context).size.width - 100,
     child: InkWell(
     onTap: () {
-      ongoingJobsDetails(context,name, date, time, amount);
+      completedJobsDetails(context,name, date, time, amount);
     },
       child: Align(
         alignment: Alignment.centerLeft,
