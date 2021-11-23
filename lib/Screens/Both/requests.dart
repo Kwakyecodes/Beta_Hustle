@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:beta_hustle/colors.dart';
-import 'package:beta_hustle/constants.dart';
+import '/models/colors.dart';
+import '/models/constants.dart';
 import 'package:flutter/rendering.dart';
-import '../../strings.dart';
-import 'package:beta_hustle/lists.dart';
+import '/models/strings.dart';
+import '/models/lists.dart';
 
 class Requests extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class Requests extends StatefulWidget {
 
 class _RequestsState extends State<Requests> {
   ScrollController _scrollBottomBarController = new ScrollController();
-  List<String> methodOfPayment = ["Cash","Mobile Money","Bundle"];
+  List<String> methodOfPayment = ["Cash","Momo","Bundle"];
   String radioButtonItem = "Cash";
   int id = 1;
 
@@ -135,21 +135,27 @@ class _RequestsState extends State<Requests> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
+
         length: 3,
         child: Scaffold(
           //resizeToAvoidBottomInset: true,
-          appBar: AppBar(
-            bottom: const TabBar(
+          appBar:
+          AppBar(
+            toolbarHeight: 18,
+            backgroundColor: blueGrey5,
+            flexibleSpace: TabBar(
+
               indicatorColor: green,
-              labelPadding: const EdgeInsets.only(bottom:7),
+              labelPadding: const EdgeInsets.only(top:10,bottom:10),
               unselectedLabelColor: Colors.white,
               labelColor: green,
+
               tabs: [
                 Text("Pending",
-                style: TextStyle(
-                  fontFamily: textFont,
-                  fontSize:forgotPasswordSize,
-            )),
+                    style: TextStyle(
+                      fontFamily: textFont,
+                      fontSize:forgotPasswordSize,
+                    )),
                 Text("Ongoing",
                     style: TextStyle(
                       fontFamily: textFont,
@@ -161,25 +167,14 @@ class _RequestsState extends State<Requests> {
                       fontSize:forgotPasswordSize,
                     )),
               ],
+
+
             ),
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back),
-              iconSize: cancelIconSize,
-              color:Colors.white,
-            ),
-            centerTitle: true,
-            title: const Text(jobRequestsTitle,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: textFont,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                )),
-            backgroundColor: blueGrey5,
           ),
+
           body: TabBarView(
             children: [
+
               listContainer(),
               listContainer(),
               listContainer(),
@@ -208,7 +203,7 @@ class _RequestsState extends State<Requests> {
                 icon: Icon(Icons.clear_outlined, color: Colors.black,
                     size: cancelIconSize),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.pushNamed(context,'/jobRequest');
                 },
               ),
               ),
@@ -471,7 +466,7 @@ class _RequestsState extends State<Requests> {
                 height: MediaQuery
                     .of(context)
                     .size
-                    .height * .90,
+                    .height * .75,
                 child: ListView(
                     controller: _scrollBottomBarController,
                     children: <Widget>[
@@ -491,12 +486,14 @@ class _RequestsState extends State<Requests> {
                         child:Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(nameOfJobs[name],
-                                  style: TextStyle(
-                                    fontFamily: textFont,
-                                    fontSize: jobDetailsTitleSize,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                              Flexible(
+                                child: Text(nameOfJobs[name],
+                                    style: TextStyle(
+                                      fontFamily: textFont,
+                                      fontSize: jobDetailsTitleSize,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
                               Text(dates[date]+", "+times[time],
                                   style: TextStyle(
                                     fontFamily: textFont,
@@ -777,12 +774,12 @@ class _RequestsState extends State<Requests> {
                       SizedBox(height: 10),
                       SizedBox(height: 10),
                       Container(
-                        margin: const EdgeInsets.only(left:30, right: 20),
+                        margin: const EdgeInsets.only(left:10, right: 10),
                         child:Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                width:200,
+                                width:135,
                                 child:FloatingActionButton.extended(
                                     backgroundColor: blueGrey3,
                                     foregroundColor: Colors.white,
@@ -793,7 +790,7 @@ class _RequestsState extends State<Requests> {
                                 ),
                               ),
                               Container(
-                                width:120,
+                                width:135,
                                 child:FloatingActionButton.extended(
                                   backgroundColor: Colors.red,
                                   foregroundColor: Colors.white,
@@ -810,8 +807,7 @@ class _RequestsState extends State<Requests> {
 
                       SizedBox(height: 50),
                       SizedBox(height: 50),
-                      SizedBox(height: 50),
-                      SizedBox(height: 50),
+
                       // listContainer(),
 
                     ]
