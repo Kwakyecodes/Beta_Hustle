@@ -33,5 +33,6 @@ const agreement = "I agree to the Beta Hustle ";
 const agreement1 = "user agreement";
 const jobRequestsTitle = "Job requests";
 const longSentence = "This is supposed to be a semi-long sentence describing the job. it might not be necessary for all situations but I think it is important...";
+const createRequest = "Create Service Request";
 
 
