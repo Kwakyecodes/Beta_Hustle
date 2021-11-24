@@ -1,7 +1,13 @@
-import 'package:beta_hustle/Screens/Both/login.dart';
-import 'package:beta_hustle/Screens/User/pushrequests.dart';
+//import 'package:beta_hustle/Screens/Both/login.dart';
+import 'package:beta_hustle/Screens/Both/login_page.dart';
+import 'package:beta_hustle/Screens/User/category_list_page.dart';
+import 'package:beta_hustle/models/job_descriptions.dart';
+
+import '/Screens/Both/login.dart';
 import 'package:flutter/material.dart';
+
 import 'Screens/Both/requests.dart';
+import 'Screens/Both/signup.dart';
 
 
 void main() {
@@ -13,9 +19,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Beta Hustle',
+
+      navigatorKey: Job.mainAppNav,
+      routes: <String, WidgetBuilder>{
+
+        '/signup':(BuildContext context)=> new SignUpPage(),
+        '/jobRequest':(BuildContext context)=> new MainPage(),
+        '/requests' : (BuildContext context)=> new Requests()
+      },
+
+
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: PushRequests(),
+      home: LoginPage(),
 
     );
   }

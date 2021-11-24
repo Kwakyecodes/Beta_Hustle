@@ -74,6 +74,9 @@ flutter:
     - family: IBMPlexSerif
       fonts:
         - asset: fonts/IBMPlexSerif-Regular.ttf
+    - family: lobster
+      fonts:
+        - asset: fonts/Lobster-Regular.ttf
 
 
 

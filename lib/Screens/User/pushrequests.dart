@@ -1,6 +1,6 @@
-import 'package:beta_hustle/colors.dart';
-import 'package:beta_hustle/constants.dart';
-import 'package:beta_hustle/strings.dart';
+import 'package:beta_hustle/models/colors.dart';
+import 'package:beta_hustle/models/constants.dart';
+import 'package:beta_hustle/models/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
@@ -21,8 +21,8 @@ class _PushRequestsState extends State<PushRequests> {
   // }
 
 
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) { //looks like the keyboard is covering the text field again
+    return Scaffold( //can someone(Eben) please do your trick to fix it? thanks :)
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},

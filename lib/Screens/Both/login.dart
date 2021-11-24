@@ -1,9 +1,11 @@
-import 'package:beta_hustle/colors.dart';
+import 'package:beta_hustle/models/colors.dart';
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
-import 'package:beta_hustle/constants.dart';
-import '../../strings.dart';
+import '/models/constants.dart';
+import '/models/strings.dart';
 
 
 class Login extends StatefulWidget {
@@ -54,7 +56,7 @@ class _LoginState extends State<Login> {
 
                 ),
               ),
-              SizedBox(height:240),
+              SizedBox(height:80),
               Align(
                   alignment: Alignment.center,
                   child: Container(
@@ -183,7 +185,11 @@ class _LoginState extends State<Login> {
                               fontFamily: textFont,
                               fontWeight: FontWeight.normal),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+
+
+                          Navigator.of(context).pushReplacementNamed('/jobRequest');
+                        },
                       )
 
                   )
@@ -298,7 +304,7 @@ class _LoginState extends State<Login> {
                       topRight: const Radius.circular(bottonSheetRadius),
                     ),)
               ),
-              SizedBox(height: 60.0),
+              SizedBox(height: 5.0),
               Align(
                   alignment: Alignment.center,
                   child: Container(
@@ -485,7 +491,7 @@ class _LoginState extends State<Login> {
               Align(
                 alignment: Alignment.centerLeft,
                   child:Container(
-                    margin: const EdgeInsets.only(left: 38.0),
+                    margin: const EdgeInsets.only(left: 5.0),
                       child: Text ("Gender",
                           style: TextStyle(
                             color: Colors.black54,
@@ -496,7 +502,7 @@ class _LoginState extends State<Login> {
                   )
               ),
               Container(
-                margin: const EdgeInsets.only(left:28.0),
+                margin: const EdgeInsets.only(left:0.0),
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
@@ -555,35 +561,39 @@ class _LoginState extends State<Login> {
                       ),),
                   ],
                 ),),
-            SizedBox(height:10),
+           
             Container(
-                margin: const EdgeInsets.only(left:22.0),
-                child:Row(
-                    children: [
-                      Checkbox(
-                        checkColor: Colors.white,
-                        activeColor: green,//Colors.blue,
-                        value: isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            isChecked = value!;
-                          });
-                        },),
-                      Text(agreement,
-                          style:TextStyle(
-                            fontSize:loginSize,
-                            fontFamily: textFont,
-                          )),
-                      Text(agreement1,
-                          style:TextStyle(
-                            color: Colors.blue,
-                            fontSize:loginSize,
-                            fontFamily: textFont,
-                            fontWeight: FontWeight.bold,
-                          )),
-                    ])
+
+                child:Flexible(
+                  child: Row(
+                      children: [
+                        Checkbox(
+                          checkColor: Colors.white,
+                          activeColor: green,//Colors.blue,
+                          value: isChecked,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              isChecked = value!;
+                            });
+                          },),
+                                                             
+                          Text(agreement,
+                              style:TextStyle(
+                                fontSize:14,
+                                fontFamily: textFont,
+                              )),
+
+                        Text(agreement1,
+                            style:TextStyle(
+                              color: Colors.blue,
+                              fontSize:14,
+                              fontFamily: textFont,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ]),
+                )
             ),
-            SizedBox(height:20),
+            SizedBox(height:0),
             Container(
               margin: const EdgeInsets.only(left:170),
                 child:FloatingActionButton.extended(
