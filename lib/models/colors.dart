@@ -10,5 +10,6 @@ const coolGray = Color(0xFF6B7A98);
 const deepBlue = Color(0xFF05014A);
 const textfieldColor = Color(0xFFE0E4EA);
 const green = Color(0xFF25C998);
+const unreadColor = Color(0xFFFFEFEE);
 
 
