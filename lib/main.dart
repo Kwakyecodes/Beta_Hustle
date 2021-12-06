@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginPage(),
 
     );
   }

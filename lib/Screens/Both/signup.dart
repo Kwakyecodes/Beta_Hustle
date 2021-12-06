@@ -162,7 +162,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                    width: 225,
                                    height: 50,
                                    child: TextField(
-
+                                    
                                      decoration: InputDecoration(
                                        hintText: 'Password',
                                        hintStyle: TextStyle(
@@ -179,7 +179,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                                    setState(() {
                                                      passwordObscure1= false;
                                                      iconType1=Icons.visibility_off_outlined;
-                                                   });
+                                                   }
+
+                                                   );
                                                  }
                                                  else if(passwordObscure1==false){
                                                    setState(() {
@@ -198,7 +200,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
                                      obscureText: passwordObscure1,
                                    ),
+
                                  ),
+
                                ],
 
                              ),
