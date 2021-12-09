@@ -61,7 +61,7 @@ class JobDetailsHaderWithPoster extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          JobPoster(poster: job!.poster.toString() ),
+          JobPoster(poster: job!.images[1].toString() ),
           SizedBox(width: 16),
 
           Expanded(child: JobDetailsHeader(job: job,))

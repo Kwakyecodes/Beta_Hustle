@@ -58,12 +58,14 @@ class _HomePageState extends State<HomePage> {
                               children:[
 
                                 JobCard(jobList[index],context),
+                                Favorite(context),
                                 Positioned(
                                     top: 25.0,
                                     left:30,
                                     child: JobImage(jobList[index].poster)
 
                                 ),
+
 
 
 
@@ -324,7 +326,7 @@ class JobsListViewDetails extends StatelessWidget {
       body: ListView(
         children: [
 
-          JobDetailsThumbnail(thumbnail: job!.poster),
+          JobDetailsThumbnail(thumbnail: job!.images[1]),
           JobDetailsHaderWithPoster(job: job),
           HorizontalLine(),
           JobsDetailsCast(job: job,),
@@ -353,3 +355,22 @@ class JobsListViewDetails extends StatelessWidget {
 }
 
 
+Widget Favorite(BuildContext context){
+
+  return
+
+     Container(
+
+  alignment: Alignment(1,0),
+      child: IconButton(
+        icon:Icon(Icons.favorite_border_outlined),
+        onPressed: (){
+
+
+        },
+      ),
+
+    );
+
+
+}
