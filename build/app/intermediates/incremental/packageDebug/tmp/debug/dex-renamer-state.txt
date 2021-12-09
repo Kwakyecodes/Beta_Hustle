@@ -1,4 +1,4 @@
-#Wed Dec 08 06:39:43 UTC 2021
+#Thu Dec 09 17:00:56 UTC 2021
 base.0=C\:\\Users\\hp\\Desktop\\beta_hustle\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
