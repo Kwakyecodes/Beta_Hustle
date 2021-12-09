@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                 Positioned(
                                     top: 35.0,
                                     right:15,
-                                    child: JobImage(jobList[index].poster)
+                                    child: JobImage(jobList[index].images[1])
 
                                 ),
 

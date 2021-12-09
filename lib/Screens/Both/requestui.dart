@@ -148,7 +148,7 @@ class JobsDetailsCast extends StatelessWidget {
       child: Column(
         children: [
           JobField(field: "Cast", value: job!.actors),
-          JobField(field: "Directors", value: job!.director),
+          JobField(field: "Directors", value: job!.requestTitle),
           JobField(field: "Awards",value: job!.awards)
         ],
       ),

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: HandyMainPage(),
+      home: LoginPage(),
 
     );
   }

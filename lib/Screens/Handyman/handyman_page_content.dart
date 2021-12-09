@@ -205,7 +205,7 @@ Widget JobCard(Job job,BuildContext context){
                           child: Container(
                             padding: EdgeInsets.only(left: 25,top: 20),
 
-                            child: Text("${job.jobTitle.toUpperCase()}",style: TextStyle(
+                            child: Text("${job.requestTitle.toUpperCase()}",style: TextStyle(
                               fontSize: 18,
                               color: Colors.blueGrey.shade900,
                               fontFamily: textFont,

@@ -5,13 +5,13 @@ class Job {
   static GlobalKey<NavigatorState>mainAppNav=GlobalKey();
   static List<Job> getJob() => [
     Job(
-        "Instagram Account Manager",
+        "Social Media Marketer",
         "Kwakye Tripod",
         "Hall 7",
         "The description of the Job goes here",
         "25",
         "12th Dec 2021",
-        "James Cameron",
+        "Instagram Account Manager",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver",
         "A paraplegic marine disoactched to the moon",
@@ -30,13 +30,13 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Website Creation",
+        "Website Designer",
         "Chelsea Wiafe",
         "Src Hostel",
         "The description of the Job goes here",
         "160",
         "19th Dec 2021",
-        "James Cameron",
+        "Website Creation",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -55,13 +55,13 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Basic Electronics Tutor",
+        "Academic Tutor",
         "Eben Tyler",
         "Republic Hall",
         "The description of the Job goes here",
         "1,200",
         "20th Dec 2021",
-        "James Cameron",
+        "Basic Electronics Tutor",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -80,13 +80,13 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Graphic Design",
+        "Graphic Designer",
         "Bruce Kwakye",
         "Queens Hall",
         "The description of the Job goes here",
         "85",
         "10th Dec 2021",
-        "James Cameron",
+        "Graphic Design",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -106,13 +106,13 @@ class Job {
           "https://picsum.photos/300/300"]),
 
     Job(
-        "Hair Dressing Service",
+        "Hair Dresser",
         "Tripod Chem",
         "Brunei Complex",
         "The description of the Job goes here",
         "80",
         "21st Dec 2021",
-        "James Cameron",
+        "Hair Dressing Service",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -131,13 +131,13 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Windows Installation",
+        "Computer Specialist",
         "Lydia Kim",
         "Baby Brunei",
         "The description of the Job goes here",
         "650",
         "31st Dec 2021",
-        "James Cameron",
+        "Windows Installation",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -156,13 +156,13 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Basic Mechanics Tutor",
+        "Academic Tutor",
         "Anabel Carmelo",
         "Africa Hall",
         "The description of the Job goes here",
         "125",
-        "12th Dec 2021",
-        "James Cameron",
+        "31st Dec 2021",
+        "Basic Mechanics Tutor",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
         "Years after a plague killed most of  humanity and transform the rest into mosters,the sole survivor in NewYork City Struggles to find a cure",
@@ -183,13 +183,13 @@ class Job {
 
 
   ];
-  String jobTitle='';
+  String requestTitle='';
   String username = '';
   String location = '';
   String jobDescription = '';
   String price = '';
   String endDate = '';
-  String director = '';
+  String jobTitle = '';
   String writer = '';
   String actors = '';
   String plot = '';
@@ -212,7 +212,7 @@ class Job {
       this.jobDescription,
       this.price,
       this.endDate,
-      this.director,
+      this.requestTitle,
       this.writer,
       this.actors,
       this.plot,
