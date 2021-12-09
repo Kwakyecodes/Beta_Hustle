@@ -1,6 +1,8 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
 import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
+import 'package:beta_hustle/Screens/User/pushrequests.dart';
+import 'package:beta_hustle/chat_files/screens/home_screen.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
 import '/Screens/Both/login.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'Screens/Both/requests.dart';
 import 'Screens/Both/signup.dart';
+import 'Screens/User/payment.dart';
 
 
 void main() {
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomeScreen(),
 
     );
   }

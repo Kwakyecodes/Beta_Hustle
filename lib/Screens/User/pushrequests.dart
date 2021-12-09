@@ -21,8 +21,8 @@ class _PushRequestsState extends State<PushRequests> {
   // }
 
 
-  Widget build(BuildContext context) { //looks like the keyboard is covering the text field again
-    return Scaffold( //can someone(Eben) please do your trick to fix it? thanks :)
+  Widget build(BuildContext context) { //looks like the keyboard is covering the text field again and there is
+    return Scaffold( //some bottom overflow problem. can someone(Eben) please do your trick to fix it? thanks :)
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},

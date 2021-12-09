@@ -30,7 +30,7 @@ class _RequestsState extends State<Requests> {
       width: MediaQuery.of(context).size.width - 100,
     child: InkWell(
     onTap: () {
-      completedJobsDetails(context,name, date, time, amount);
+      pendingJobsDetails(context,name, date, time, amount);
     },
       child: Align(
         alignment: Alignment.centerLeft,
