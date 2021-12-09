@@ -106,7 +106,7 @@ class JobDetailsHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("${job!.year} . ${job!.genre.toUpperCase()}",style: TextStyle(
+        Text("${job!.username} . ${job!.endDate.toUpperCase()}",style: TextStyle(
           fontWeight: FontWeight.bold,
           color:Colors.cyan,
 
@@ -186,7 +186,7 @@ class HorizontalLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 4.0),
       child: Container(
 
         height: 0.5,

@@ -5,12 +5,12 @@ class Job {
   static GlobalKey<NavigatorState>mainAppNav=GlobalKey();
   static List<Job> getJob() => [
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Instagram Account Manager",
+        "Kwakye Tripod",
+        "Hall 7",
         "The description of the Job goes here",
-        "162 min",
-        "Action",
+        "25",
+        "12th Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver",
@@ -18,7 +18,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/steven.jpg",
         "83",
         "7.9",
         "890,617",
@@ -30,12 +30,12 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Website Creation",
+        "Chelsea Wiafe",
+        "Src Hostel",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "160",
+        "19th Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -43,7 +43,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/sam.jpg",
         "83",
         "7.9",
         "890,617",
@@ -55,12 +55,12 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Basic Electronics Tutor",
+        "Eben Tyler",
+        "Republic Hall",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "1,200",
+        "20th Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -68,7 +68,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/greg.jpg",
         "83",
         "7.9",
         "890,617",
@@ -80,12 +80,12 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Graphic Design",
+        "Bruce Kwakye",
+        "Queens Hall",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "85",
+        "10th Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -93,7 +93,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/james.jpg",
         "83",
         "7.9",
         "890,617",
@@ -106,12 +106,12 @@ class Job {
           "https://picsum.photos/300/300"]),
 
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Hair Dressing Service",
+        "Tripod Chem",
+        "Brunei Complex",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "80",
+        "21st Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -119,7 +119,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/john.jpg",
         "83",
         "7.9",
         "890,617",
@@ -131,12 +131,12 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Windows Installation",
+        "Lydia Kim",
+        "Baby Brunei",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "650",
+        "31st Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -144,7 +144,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/olivia.jpg",
         "83",
         "7.9",
         "890,617",
@@ -156,12 +156,12 @@ class Job {
           "https://picsum.photos/300/300",
           "https://picsum.photos/300/300"]),
     Job(
-        "Job Description",
-        "2002",
-        "PG- 13",
+        "Basic Mechanics Tutor",
+        "Anabel Carmelo",
+        "Africa Hall",
         "The description of the Job goes here",
-        "162 min",
-        "drummer,horror,sci-fi",
+        "125",
+        "12th Dec 2021",
         "James Cameron",
         "James Cameron",
         "Zoe Saldana,Sigourney Weaver,Karikari Wiafe and Chelsy",
@@ -169,7 +169,7 @@ class Job {
         "English, Spanish",
         "USA,UK",
         "Won 3 Oscars. Another 80 wins & 121 nominations",
-        "https://picsum.photos/300/300",
+        "assets/images/sophia.jpg",
         "83",
         "7.9",
         "890,617",
@@ -184,17 +184,17 @@ class Job {
 
   ];
   String jobTitle='';
-  String year = '';
-  String rated = '';
+  String username = '';
+  String location = '';
   String jobDescription = '';
-  String runtime = '';
-  String genre = '';
+  String price = '';
+  String endDate = '';
   String director = '';
   String writer = '';
   String actors = '';
   String plot = '';
   String language = '';
-  String country = '';
+  String other = '';
   String awards = '';
   String poster = '';
   String metaScore = '';
@@ -207,17 +207,17 @@ class Job {
 
   Job(
       this.jobTitle,
-      this.year,
-      this.rated,
+      this.username,
+      this.location,
       this.jobDescription,
-      this.runtime,
-      this.genre,
+      this.price,
+      this.endDate,
       this.director,
       this.writer,
       this.actors,
       this.plot,
       this.language,
-      this.country,
+      this.other,
       this.awards,
       this.poster,
       this.metaScore,

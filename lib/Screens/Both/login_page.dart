@@ -12,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  bool loginState=true;
   bool passwordObscure=true;
   IconData iconType=Icons.visibility_outlined;
   @override
@@ -62,7 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                               textOff: "Handyman",
                               iconOff: Icons.attach_money,
                               onChanged: (bool state){
-
+                                loginState=state;
+                                  print("$loginState");
                               },
 
                             )
@@ -239,7 +242,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height:20.0),
                       ElevatedButton(onPressed: (){
-                        Navigator.of(context).pushReplacementNamed('/jobRequest');
+                        if (loginState==true) {
+                          Navigator.of(context).pushReplacementNamed(
+                              '/jobRequest');
+                        }
+                        else if (loginState==false){
+                          Navigator.of(context).pushReplacementNamed(
+                              '/handyPage');
+
+                        }
 
                       },
                          style: ElevatedButton.styleFrom(

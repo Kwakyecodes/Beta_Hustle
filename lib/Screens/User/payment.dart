@@ -58,20 +58,23 @@ class _Payment extends State<Payment> {
                     child:Container(
                       margin:const EdgeInsets.only(left: 25,right:25,bottom:12),
                       child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children:[
                           Icon(
                             Icons.payments_outlined,
                             color: Colors.black54,
                             size: cancelIconSize,
                           ),
-                          Text("Cash",
-                          style: TextStyle(
-                            fontSize: textFieldSize,
-                            fontFamily: textFont,
-                            color: Colors.black,
-                          )),
-                          SizedBox(width:210),
+                          Padding(
+                            padding: const EdgeInsets.only(left:8.0),
+                            child: Text("Cash",
+                            style: TextStyle(
+                              fontSize: textFieldSize,
+                              fontFamily: textFont,
+                              color: Colors.black,
+                            )),
+                          ),
+                          SizedBox(width:170),
                           Icon(
                             Icons.verified,
                             color: Colors.green,
@@ -105,7 +108,7 @@ class _Payment extends State<Payment> {
                                         fontFamily: textFont,
                                         color: Colors.black,
                                       )),
-                                  SizedBox(width:140),
+                                  SizedBox(width:100),
                                   Icon(
                                     Icons.verified,
                                     color: Colors.green,
@@ -141,7 +144,7 @@ class _Payment extends State<Payment> {
                                       fontFamily: textFont,
                                       color: Colors.black,
                                     )),
-                                SizedBox(width:45),
+                                //SizedBox(width:20),
                                 Icon(
                                   Icons.keyboard_arrow_right,
                                   color: Colors.black54,

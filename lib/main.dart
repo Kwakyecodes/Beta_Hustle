@@ -1,5 +1,6 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
 import 'package:beta_hustle/Screens/Both/login_page.dart';
+import 'package:beta_hustle/Screens/Handyman/handyman_main_page.dart';
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
 import 'package:beta_hustle/chat_files/screens/home_screen.dart';
@@ -28,13 +29,14 @@ class MyApp extends StatelessWidget {
 
         '/signup':(BuildContext context)=> new SignUpPage(),
         '/jobRequest':(BuildContext context)=> new MainPage(),
+        '/handyPage':(BuildContext context) => new HandyMainPage(),
         '/requests' : (BuildContext context)=> new Requests()
       },
 
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HandyMainPage(),
 
     );
   }
