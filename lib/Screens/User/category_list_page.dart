@@ -359,7 +359,7 @@ class _MainPageState extends State<MainPage> {
                               }
                             });
                             Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/pushrequests');
+                                ?.pushReplacementNamed('/settingspage');
                           },
                         ),
                       ),

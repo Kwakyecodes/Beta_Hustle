@@ -57,7 +57,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           children: [
                             Text(
                               'Create an Account',
-                              style: TextStyle(fontFamily: "Lobster", color: Colors.blueGrey.shade900, fontSize: 30, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontFamily: "Lobster",
+                                  color: Colors.blueGrey.shade900,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -136,7 +140,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                       }),
                                   Text(
                                     "Male",
-                                    style: TextStyle(fontFamily: "Lobster", fontWeight: FontWeight.bold, color: Colors.blueGrey, fontSize: 16),
+                                    style: TextStyle(
+                                        fontFamily: "Lobster",
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blueGrey,
+                                        fontSize: 16),
                                   ),
                                   SizedBox(
                                     width: 20,
@@ -152,7 +160,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                       }),
                                   Text(
                                     "Female",
-                                    style: TextStyle(fontFamily: "Lobster", fontWeight: FontWeight.bold, color: Colors.blueGrey, fontSize: 16),
+                                    style: TextStyle(
+                                        fontFamily: "Lobster",
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.blueGrey,
+                                        fontSize: 16),
                                   ),
                                 ],
                               ),
@@ -181,7 +193,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                 controller: password,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
-                                  hintStyle: TextStyle(fontFamily: "Lobster", fontWeight: FontWeight.bold, color: Colors.white),
+                                  hintStyle: TextStyle(
+                                      fontFamily: "Lobster",
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
                                   border: InputBorder.none,
                                   suffixIcon: Container(
                                       child: InkWell(
@@ -189,12 +204,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                             if (passwordObscure1 == true) {
                                               setState(() {
                                                 passwordObscure1 = false;
-                                                iconType1 = Icons.visibility_off_outlined;
+                                                iconType1 = Icons
+                                                    .visibility_off_outlined;
                                               });
-                                            } else if (passwordObscure1 == false) {
+                                            } else if (passwordObscure1 ==
+                                                false) {
                                               setState(() {
                                                 passwordObscure1 = true;
-                                                iconType1 = Icons.visibility_outlined;
+                                                iconType1 =
+                                                    Icons.visibility_outlined;
                                               });
                                             }
                                           },
@@ -232,7 +250,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                 controller: cpassword,
                                 decoration: InputDecoration(
                                   hintText: 'Confirm Password',
-                                  hintStyle: TextStyle(fontFamily: "Lobster", fontWeight: FontWeight.bold, color: Colors.white),
+                                  hintStyle: TextStyle(
+                                      fontFamily: "Lobster",
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
                                   border: InputBorder.none,
                                   suffixIcon: Container(
                                       child: InkWell(
@@ -240,12 +261,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                             if (passwordObscure2 == true) {
                                               setState(() {
                                                 passwordObscure2 = false;
-                                                iconType2 = Icons.visibility_off_outlined;
+                                                iconType2 = Icons
+                                                    .visibility_off_outlined;
                                               });
-                                            } else if (passwordObscure2 == false) {
+                                            } else if (passwordObscure2 ==
+                                                false) {
                                               setState(() {
                                                 passwordObscure2 = true;
-                                                iconType2 = Icons.visibility_outlined;
+                                                iconType2 =
+                                                    Icons.visibility_outlined;
                                               });
                                             }
                                           },
@@ -275,15 +299,25 @@ class _SignUpPageState extends State<SignUpPage> {
                           elevation: 7.0,
                           child: GestureDetector(
                             onTap: () {
-                              bool valid = validate.signup(context, fname.text, sname.text, email.text, phone.text, password.text, cpassword.text, _value);
+                              bool valid = validate.signup(
+                                  context,
+                                  fname.text,
+                                  sname.text,
+                                  email.text,
+                                  phone.text,
+                                  password.text,
+                                  cpassword.text,
+                                  _value);
                               if (valid == true) {
                                 setState(() {
-                                  int verifycode = fname.text.length * 200 + 430;
+                                  int verifycode =
+                                      fname.text.length * 200 + 430;
                                   // fotp.sendOtp(phone.text);
                                   otpOn = true;
                                 });
                                 //  user.verifyPhone(fname.text, sname.text, email.text, phone.text, password.text, context, _value, verifycode);
-                                user.signUp(fname.text, sname.text, email.text, phone.text, password.text, context, _value);
+                                user.signUp(fname.text, sname.text, email.text,
+                                    phone.text, password.text, context, _value);
                               }
                             },
                             child: Center(
@@ -317,7 +351,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             },
                             child: Text(
                               "Login",
-                              style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -364,7 +400,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.fromLTRB(35.0, 150.0, 0.0, 0.0),
                       child: Text(
                         'Verify ' + phone.text,
-                        style: TextStyle(color: Colors.blueGrey.shade900, fontSize: 30, fontWeight: FontWeight.bold, fontFamily: "Lobster"),
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade900,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Lobster"),
                       ),
                     ),
                   ],
@@ -378,7 +418,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Column(
                   children: [
                     Container(
-                      decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.5), borderRadius: BorderRadius.circular(50)),
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(50)),
                       padding: EdgeInsets.only(left: 5, top: 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -435,10 +477,14 @@ class _SignUpPageState extends State<SignUpPage> {
                         onPressed: () {
                           //Navigator.of(context).pushReplacementNamed('/jobRequest');
                           if (verifycode == otp.text) {
-                            user.signUp(fname.text, sname.text, email.text, phone.text, password.text, context, _value);
+                            user.signUp(fname.text, sname.text, email.text,
+                                phone.text, password.text, context, _value);
                           }
                         },
-                        style: ElevatedButton.styleFrom(primary: Colors.blueGrey.shade900, shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0))),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.blueGrey.shade900,
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0))),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.0),

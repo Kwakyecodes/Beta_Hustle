@@ -6,7 +6,13 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final IconData? iconType;
   final TextInputType? keyboardType;
-  const CustomTextField({Key? key, this.hintName = '', this.iconType, this.keyboardType, this.controller}) : super(key: key);
+  const CustomTextField(
+      {Key? key,
+      this.hintName = '',
+      this.iconType,
+      this.keyboardType,
+      this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,10 @@ class CustomTextField extends StatelessWidget {
               keyboardType: keyboardType,
               decoration: InputDecoration(
                 hintText: hintName,
-                hintStyle: TextStyle(fontFamily: "Lobster", fontWeight: FontWeight.bold, color: Colors.white),
+                hintStyle: TextStyle(
+                    fontFamily: "Lobster",
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
                 border: InputBorder.none,
               ),
             ),

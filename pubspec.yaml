@@ -57,6 +57,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
    - assets/images/pseudoLogo.jpeg
+   - assets/images/greg.jpg
+   - assets/images/james.jpg
+   - assets/images/john.jpg
+   - assets/images/olivia.jpg
+   - assets/images/sam.jpg
+   - assets/images/sophia.jpg
+   - assets/images/steven.jpg
 
 
 
@@ -96,4 +103,5 @@ flutter:
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
   # see https://flutter.dev/custom-fonts/#from-packages

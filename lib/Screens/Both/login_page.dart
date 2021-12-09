@@ -61,21 +61,32 @@ class _LoginPageState extends State<LoginPage> {
                       padding: EdgeInsets.fromLTRB(20.0, 90.0, 0.0, 0.0),
                       child: Text(
                         'Beta',
-                        style: TextStyle(color: Colors.blueGrey.shade900, fontSize: 60, fontWeight: FontWeight.bold, fontFamily: "Lobster"),
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade900,
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Lobster"),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(35.0, 150.0, 0.0, 0.0),
                       child: Text(
                         'Hustle',
-                        style: TextStyle(color: Colors.blueGrey.shade900, fontSize: 60, fontWeight: FontWeight.bold, fontFamily: "Lobster"),
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade900,
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Lobster"),
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(180.0, 145.0, 0.0, 0.0),
                       child: Text(
                         '.',
-                        style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold, color: Color(0XFF6A62B7)),
+                        style: TextStyle(
+                            fontSize: 60,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0XFF6A62B7)),
                       ),
                     ),
                   ],
@@ -86,7 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     Container(
-                      decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.5), borderRadius: BorderRadius.circular(50)),
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(50)),
                       padding: EdgeInsets.only(left: 5, top: 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,7 +122,10 @@ class _LoginPageState extends State<LoginPage> {
                                 hintText: "Email",
                                 //fillColor: Colors.blueGrey,
 
-                                hintStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontFamily: "Lobster"),
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontFamily: "Lobster"),
                               ),
                             ),
                           ),
@@ -121,7 +137,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Container(
                       padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(color: Colors.blueGrey.withOpacity(0.5), borderRadius: BorderRadius.all(Radius.circular(50))),
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey.withOpacity(0.5),
+                          borderRadius: BorderRadius.all(Radius.circular(50))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -139,12 +157,14 @@ class _LoginPageState extends State<LoginPage> {
                                           if (passwordObscure == true) {
                                             setState(() {
                                               passwordObscure = false;
-                                              iconType = Icons.visibility_off_outlined;
+                                              iconType =
+                                                  Icons.visibility_off_outlined;
                                             });
                                           } else if (passwordObscure == false) {
                                             setState(() {
                                               passwordObscure = true;
-                                              iconType = Icons.visibility_outlined;
+                                              iconType =
+                                                  Icons.visibility_outlined;
                                             });
                                           }
                                         },
@@ -185,7 +205,10 @@ class _LoginPageState extends State<LoginPage> {
                           final validate = new formValidate();
                           validate.login(context, email.text, password.text);
                         },
-                        style: ElevatedButton.styleFrom(primary: Colors.blueGrey.shade900, shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0))),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.blueGrey.shade900,
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0))),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.0),
@@ -218,7 +241,9 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text(
                             "Register",
-                            style: TextStyle(color: Colors.blueGrey.shade500, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.blueGrey.shade500,
+                                fontWeight: FontWeight.bold),
                           ),
                         )
                       ],
