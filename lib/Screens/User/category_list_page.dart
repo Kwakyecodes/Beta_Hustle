@@ -3,6 +3,8 @@ import 'package:beta_hustle/Screens/User/pushrequests.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
 import 'package:beta_hustle/Screens/Both/requestui.dart';
+import 'package:beta_hustle/models/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -115,7 +117,18 @@ class _MainPageState extends State<MainPage> {
                   "About",
                   style: TextStyle(fontSize: 16.0),
                 ),
-              )
+              ),
+              ListTile(
+                leading: Icon(Icons.logout_sharp),
+                title: Text(
+                  "Logout",
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                onTap: () {
+                  final user = new NUser();
+                  user.signout();
+                },
+              ),
             ],
           ),
         ),

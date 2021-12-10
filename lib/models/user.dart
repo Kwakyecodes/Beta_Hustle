@@ -8,6 +8,7 @@ import 'package:beta_hustle/models/db_ref.dart';
 //import 'package:flutter_sms/flutter_sms.dart';
 import 'package:telephony/telephony.dart';
 
+
 String verifyID = "...";
 final Telephony telephony = Telephony.instance;
 
@@ -29,6 +30,7 @@ class NUser {
       //Navigator.of(context).pushNamed('/jobRequest');
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/jobRequest', (Route<dynamic> route) => false);
+         
       // Navigator.of(context).popUntil(ModalRoute.withName('/jobRe'));
     } else {
 //An error occured
@@ -73,6 +75,10 @@ class NUser {
 //An error occured
       alerts.user_toast("Unable to create new User");
     }
+  }
+
+  signout() async {
+    await FirebaseAuth.instance.signOut();
   }
 
   verifyPhone(String fname, String sname, String email, String phone,
