@@ -1,6 +1,7 @@
 import 'package:beta_hustle/chat_files/models/message_model.dart';
 import 'package:beta_hustle/chat_files/screens/chat_screen.dart';
 import 'package:beta_hustle/models/colors.dart';
+import 'package:beta_hustle/models/strings.dart';
 import 'package:flutter/material.dart';
 
 
@@ -61,6 +62,7 @@ class RecentChats extends StatelessWidget {
                               Text(
                                 chat.sender.name,
                                 style: TextStyle(
+                                  fontFamily: textFont,
                                   color: Colors.grey,
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
@@ -73,6 +75,7 @@ class RecentChats extends StatelessWidget {
                                   chat.text,
                                   style: TextStyle(
                                     color: Colors.blueGrey,
+                                    fontFamily: textFont,
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -89,6 +92,7 @@ class RecentChats extends StatelessWidget {
                             chat.time,
                             style: TextStyle(
                               color: Colors.grey,
+                              fontFamily: textFont,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -107,6 +111,7 @@ class RecentChats extends StatelessWidget {
                               'NEW',
                               style: TextStyle(
                                 color: Colors.white,
+                                fontFamily: textFont,
                                 fontSize: 12.0,
                                 fontWeight: FontWeight.bold,
                               ),

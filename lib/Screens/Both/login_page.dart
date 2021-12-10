@@ -1,3 +1,6 @@
+import 'package:beta_hustle/models/colors.dart';
+import 'package:beta_hustle/models/constants.dart';
+import 'package:beta_hustle/models/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
@@ -13,6 +16,12 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool passwordObscure=true;
+  bool isChecked = false;
+  int id = 1;
+  List<String> sex = ["Male","Female"];
+  String radioButtonItem = "Male";
+  bool hideSetPassword = true;
+  bool hideConfirmedPassword = true;
   IconData iconType=Icons.visibility_outlined;
   @override
   Widget build(BuildContext context) {
@@ -277,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(width: 5.0,),
                         InkWell(
                           onTap: (){
-                            Navigator.of(context).pushNamed('/signup');
+                            _signUp(context);
                           },
                           child: Text("Register",style: TextStyle(
                             color: Colors.blueGrey.shade500,
@@ -296,6 +305,345 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
 
+    );
+  }
+  void _signUp(context) { // this is the start of the bottom sheet
+    showModalBottomSheet(context: context,builder: (BuildContext bc) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
+            return Container(
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height * .90,
+              child: Column(
+                  children: [
+                    Container(
+                        child: Row(
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.clear_outlined, color: Colors.black,
+                                    size: cancelIconSize),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      margin: const EdgeInsets.only(left: 25.0),
+                                      child: Text(createAccount,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: appNameFont,
+                                            fontSize: titleSize,
+                                            fontWeight: FontWeight.bold,
+                                          ))
+                                  )
+                              ),
+                            ]),
+                        decoration: BoxDecoration(
+                          color: blueGrey5,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: const Radius.circular(bottonSheetRadius),
+                            topRight: const Radius.circular(bottonSheetRadius),
+                          ),)
+                    ),
+                    SizedBox(height: 5.0),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                              //prefixIcon: Icon(Icons.email_outlined,),//color: Colors.black12),
+                              //border: InputBorder.none,
+                                labelText: hintFirstName,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+                            ),),
+                          /*decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(textFieldRadius)),
+                  ),*/
+                        )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                              //border: InputBorder.none,
+                              //prefixIcon: Icon(Icons.email_sharp,color: Colors.blue),
+                                labelText: hintLastName,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+
+                            ),
+                          ),
+                        )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                              //border: InputBorder.none,
+                              //prefixIcon: Icon(Icons.email_sharp,color: Colors.blue),
+                                labelText: hintPhoneNumber,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+                            ),
+                          ),
+                        )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                              //border: InputBorder.none,
+                              //prefixIcon: Icon(Icons.email_sharp,color: Colors.blue),
+                                labelText: hintEmail,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+                            ),
+                          ),
+                        )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            obscureText: hideSetPassword,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    // Based on passwordVisible state choose the icon
+                                    hideSetPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    //color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      hideSetPassword = !hideSetPassword;
+                                    });
+                                  }
+                                  // Update the state i.e. toggle the state of passwordVisible variable
+                                  ,
+                                ),
+                                //border: InputBorder.none,
+                                //prefixIcon: Icon(Icons.email_sharp,color: Colors.blue),
+                                labelText: hintPassword,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+                            ),
+                          ),
+                        )),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: textFieldHeight,
+                          width: textFieldWidth,
+                          child: TextField(
+                            obscureText: hideConfirmedPassword,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.blue,
+                            decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    // Based on passwordVisible state choose the icon
+                                    hideConfirmedPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    //color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      hideConfirmedPassword = !hideConfirmedPassword;
+                                    });
+                                  }
+                                  // Update the state i.e. toggle the state of passwordVisible variable
+                                  ,
+                                ),
+                                //border: InputBorder.none,
+                                //prefixIcon: Icon(Icons.email_sharp,color: Colors.blue),
+                                labelText: hintConfirmPassword,
+                                labelStyle: TextStyle(
+                                  fontSize: labelSize,
+                                  fontFamily: textFont,
+                                )
+                            ),
+                          ),
+                        )),
+                    SizedBox(height: 10.0),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child:Container(
+                            margin: const EdgeInsets.only(left: 40.0),
+                            child: Text ("Sex",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontFamily: textFont,
+                                  fontSize: RadioTitleSize,
+                                  fontWeight: FontWeight.bold,
+                                ))
+                        )
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left:30.0),
+                      child:Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Radio(
+                            value: 1,
+                            groupValue: id,
+                            onChanged: (val) {
+                              setState(() {
+                                radioButtonItem = sex[0];
+                                id = 1;
+                              });
+                            },
+                          ),
+                          Text(
+                            sex[0],
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),),
+
+                          Radio(
+                            value: 2,
+                            groupValue: id,
+                            onChanged: (val) {
+                              setState(() {
+                                radioButtonItem = sex[1];
+                                id = 2;
+                              });
+                            },
+                          ),
+                          Text(
+                            sex[1],
+                            style:  TextStyle(
+                              color: Colors.black54,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),),
+                        ],
+                      ),),
+
+                    Container(
+                      margin: const EdgeInsets.only(left:20),
+                        child:Flexible(
+                          child: Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.white,
+                                  activeColor: green,//Colors.blue,
+                                  value: isChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isChecked = value!;
+                                    });
+                                  },),
+
+                                Text(agreement,
+                                    style:TextStyle(
+                                      fontSize:14,
+                                      fontFamily: textFont,
+                                    )),
+
+                                Text(agreement1,
+                                    style:TextStyle(
+                                      color: Colors.blue,
+                                      fontSize:14,
+                                      fontFamily: textFont,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ]),
+                        )
+                    ),
+                    SizedBox(height:0),
+                    Container(
+                        margin: const EdgeInsets.only(left:170),
+                        child:FloatingActionButton.extended(
+                          backgroundColor: blueGrey3,
+                          foregroundColor: Colors.white,
+                          onPressed: () {
+                            // Respond to button press
+                          },
+                          label: Row(
+                            children: <Widget>[Text("SIGN UP"), SizedBox(width:5),Icon(Icons.arrow_forward)],
+                          ),
+                        )
+                    )
+
+                  ]),
+            );
+          });
+    },
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(bottonSheetRadius),
+      ),
+      backgroundColor: textFieldColor,
+      isScrollControlled: true,
     );
   }
 }
