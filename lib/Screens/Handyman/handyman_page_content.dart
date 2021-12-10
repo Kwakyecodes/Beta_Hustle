@@ -1,4 +1,5 @@
 import 'package:beta_hustle/models/colors.dart';
+import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 import 'package:beta_hustle/Screens/Both/requestui.dart';
 import 'package:beta_hustle/models/strings.dart';
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                               children:[
 
                                 JobCard(jobList[index],context),
-                                Favorite(context),
+                                Favorite(),
                                 Positioned(
                                     top: 25.0,
                                     left:30,
@@ -291,8 +292,7 @@ Widget JobCard(Job job,BuildContext context){
         ),
       ),
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>JobsListViewDetails(
-            jobName:job.jobTitle,job: job )));
+        JobsListViewDetails(context,job);
 
       }
   );
@@ -312,65 +312,134 @@ Widget JobImage(String imageUrl){
         ),
       ));
 }
+void JobsListViewDetails (context,Job job){
 
-class JobsListViewDetails extends StatelessWidget {
 
-  final String jobName;
-  final Job? job;
-  const JobsListViewDetails({Key? key,this.jobName='',this.job}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
+ showModalBottomSheet(context: context, builder:(BuildContext ab) {
 
-    return Scaffold(
+   return StatefulBuilder(
+       builder: (BuildContext context, StateSetter setState) {
+         return Container(
+           height: MediaQuery.of(context).size.height*0.75,
+           child:SingleChildScrollView(
+             child: Column(
+               children: [
+                 Align(
+                   alignment : Alignment.centerLeft,
+                   child:IconButton(
+                     icon: Icon(Icons.clear_outlined, color: Colors.black,
+                         size: cancelIconSize),
+                     onPressed: () {
+                       Navigator.of(context).pop();
+                     },
+                   ),
+                 ),
+               ],
+             ),
+           ),
 
-      body: ListView(
-        children: [
+         );
+       });
 
-          JobDetailsThumbnail(thumbnail: job!.images[1]),
-          JobDetailsHaderWithPoster(job: job),
-          HorizontalLine(),
-          JobsDetailsCast(job: job,),
+ },
+     shape: RoundedRectangleBorder(
+     borderRadius: BorderRadius.circular(bottonSheetRadius),
+  ),
+  backgroundColor: Colors.white,
+  isScrollControlled: true,
 
-          HorizontalLine(),
-          JobDetailsExtraPosters(posters: job!.images,)
-
-        ],
-
-      ),
-      // body: Container(
-      //   child: Center(
-      //     child: RaisedButton(
-      //       child: Text(this.movie!.director),
-      //       onPressed: (){
-      //         Navigator.pop(context);
-      //
-      //                    },
-      //     ),
-      //   ),
-      //
-      // ),
-    );
-  }
+ );
 
 }
+// class JobsListViewDetails extends StatelessWidget {
+//
+//   final String jobName;
+//   final Job? job;
+//   const JobsListViewDetails({Key? key,this.jobName='',this.job}) : super(key: key);
+//   @override
+//   Widget build(BuildContext context) {
+//
+//     return Scaffold(
+//
+//       body: ListView(
+//         children: [
+//
+//           JobDetailsThumbnail(thumbnail: job!.images[1]),
+//           JobDetailsHaderWithPoster(job: job),
+//           HorizontalLine(),
+//           JobsDetailsCast(job: job,),
+//
+//           HorizontalLine(),
+//           JobDetailsExtraPosters(posters: job!.images,)
+//
+//         ],
+//
+//       ),
+//       // body: Container(
+//       //   child: Center(
+//       //     child: RaisedButton(
+//       //       child: Text(this.movie!.director),
+//       //       onPressed: (){
+//       //         Navigator.pop(context);
+//       //
+//       //                    },
+//       //     ),
+//       //   ),
+//       //
+//       // ),
+//     );
+//   }
+//
+// }
 
+class Favorite extends StatefulWidget {
 
-Widget Favorite(BuildContext context){
+  const Favorite({Key? key}) : super(key: key);
 
-  return
+  @override
+  _FavoriteState createState() => _FavoriteState();
+}
 
-     Container(
-
-  alignment: Alignment(1,0),
+class _FavoriteState extends State<Favorite> {
+  IconData likeIcon=Icons.favorite_border_outlined;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment(1,0),
       child: IconButton(
-        icon:Icon(Icons.favorite_border_outlined),
+        icon:Icon(likeIcon,color: blueGrey5,),
         onPressed: (){
 
 
+          setState(() {
+            likeIcon = (likeIcon==Icons.favorite)?
+            likeIcon=Icons.favorite_border_outlined:likeIcon=Icons.favorite;
+
+          });
+
         },
       ),
-
+//
     );
-
-
+  }
 }
+
+// Widget Favorite(BuildContext context,int index){
+//  IconData likeIcon=Icons.favorite_border_outlined;
+//   return Container(
+//
+//   alignment: Alignment(1,0),
+//       child: IconButton(
+//         icon:Icon(likeIcon),
+//         onPressed: (){
+//
+//           print(index);
+//
+//
+//         },
+//       ),
+//
+//     );
+//
+//
+// }

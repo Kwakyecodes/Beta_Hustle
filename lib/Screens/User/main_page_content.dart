@@ -278,7 +278,7 @@ class JobsListViewDetails extends StatelessWidget {
       body: ListView(
         children: [
 
-          JobDetailsThumbnail(thumbnail: job!.poster),
+          JobDetailsThumbnail(thumbnail: job!.images[1]),
           JobDetailsHaderWithPoster(job: job),
           HorizontalLine(),
           JobsDetailsCast(job: job,),

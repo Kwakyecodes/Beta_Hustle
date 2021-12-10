@@ -106,6 +106,18 @@ class _HandyMainPageState extends State<HandyMainPage> {
                 title: Text("About",style: TextStyle(
                     fontSize: 16.0
                 ),),
+              ),
+              InkWell(
+                child: ListTile(
+                  leading: Icon(Icons.settings_power_outlined),
+                  title: Text("Sign Out",style: TextStyle(
+                      fontSize: 16.0
+                  ),),
+                ),
+                onTap: (){
+                  Navigator.of(context).pushReplacementNamed(
+                      '/loginPage');
+                },
               )
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/Screens/Both/requests.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
@@ -106,6 +107,18 @@ Color color5=Colors.blueGrey;
                 title: Text("About",style: TextStyle(
                     fontSize: 16.0
                 ),),
+              ),
+              InkWell(
+                child: ListTile(
+                  leading: Icon(Icons.settings_power_outlined),
+                  title: Text("Sign Out",style: TextStyle(
+                      fontSize: 16.0
+                  ),),
+                ),
+              onTap: (){
+                Navigator.of(context).pushReplacementNamed(
+                    '/loginPage');
+              },
               )
             ],
           ),

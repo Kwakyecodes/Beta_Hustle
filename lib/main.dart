@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
       navigatorKey: Job.mainAppNav,
       routes: <String, WidgetBuilder>{
-
+         '/loginPage' : (BuildContext context)=> new LoginPage(),
         '/signup':(BuildContext context)=> new SignUpPage(),
         '/jobRequest':(BuildContext context)=> new MainPage(),
         '/handyPage':(BuildContext context) => new HandyMainPage(),
