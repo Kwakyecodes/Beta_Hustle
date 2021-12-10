@@ -5,16 +5,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:beta_hustle/notifications/alerts.dart';
 import 'package:beta_hustle/models/db_ref.dart';
-//import 'package:flutter_sms/flutter_sms.dart';
 import 'package:telephony/telephony.dart';
-
 
 String verifyID = "...";
 final Telephony telephony = Telephony.instance;
 
 class NUser {
   final alerts = new Alerts();
-  //final FlutterSms sms = new FlutterSms();
   login(String email, String password, BuildContext context) async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final User? _FirebaseUser = (await _auth
@@ -30,8 +27,6 @@ class NUser {
       //Navigator.of(context).pushNamed('/jobRequest');
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/jobRequest', (Route<dynamic> route) => false);
-         
-      // Navigator.of(context).popUntil(ModalRoute.withName('/jobRe'));
     } else {
 //An error occured
       alerts.user_toast("Invalid Credentials");

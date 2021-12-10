@@ -36,9 +36,7 @@ class MyApp extends StatelessWidget {
         home: Authenticate(),
         routes: <String, WidgetBuilder>{
           '/signup': (BuildContext context) => new SignUpPage(),
-          //'/jobRequest': (BuildContext context) => new MainPage(),
           '/requests': (BuildContext context) => new Requests(),
-          //'/login_page': (BuildContext context) => new LoginPage(),
           '/pushrequests': (BuildContext context) => new PushRequests()
         },
         debugShowCheckedModeBanner: false,
@@ -47,6 +45,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//this class checks the if the user is signed in already
 class Authenticate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

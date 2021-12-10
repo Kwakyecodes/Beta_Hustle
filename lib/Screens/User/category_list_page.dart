@@ -126,7 +126,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 onTap: () {
                   final user = new NUser();
-                  user.signout();
+                  user.signout(); //calling the signout method from user class
                 },
               ),
             ],
