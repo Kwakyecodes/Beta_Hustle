@@ -53,7 +53,8 @@ class Authenticate extends StatelessWidget {
 
     if (firebaseUser != null) {
       return MainPage();
+    } else {
+      return LoginPage();
     }
-    return LoginPage();
   }
 }

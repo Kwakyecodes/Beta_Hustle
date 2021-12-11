@@ -10,7 +10,7 @@ class Payment extends StatefulWidget {
 }
 
 class _Payment extends State<Payment> {
-  bool momoVisible = false;
+  bool momoVisible = true;
 
 
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _Payment extends State<Payment> {
                   Container(
                       height:1,
                       width:345,
-                      color: textfieldColor
+                      color: textFieldColor
                   ),
                   Visibility(
                     visible: momoVisible,
@@ -120,7 +120,7 @@ class _Payment extends State<Payment> {
                     child:Container(
                         height:1,
                         width:345,
-                        color: textfieldColor
+                        color: textFieldColor
                     ),
                   ),
                   Align(

@@ -190,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 225,
                               height: 50,
                               child: TextField(
-                                controller: password,
+                                controller: Password,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: TextStyle(
@@ -305,7 +305,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   sname.text,
                                   email.text,
                                   phone.text,
-                                  password.text,
+                                  Password.text,
                                   cpassword.text,
                                   _value);
                               if (valid == true) {
@@ -317,7 +317,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 });
                                 //  user.verifyPhone(fname.text, sname.text, email.text, phone.text, password.text, context, _value, verifycode);
                                 user.signUp(fname.text, sname.text, email.text,
-                                    phone.text, password.text, context, _value);
+                                    phone.text, Password.text, context, _value);
                               }
                             },
                             child: Center(
@@ -478,7 +478,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           //Navigator.of(context).pushReplacementNamed('/jobRequest');
                           if (verifycode == otp.text) {
                             user.signUp(fname.text, sname.text, email.text,
-                                phone.text, password.text, context, _value);
+                                phone.text, Password.text, context, _value);
                           }
                         },
                         style: ElevatedButton.styleFrom(

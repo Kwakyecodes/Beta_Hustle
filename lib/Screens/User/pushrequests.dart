@@ -41,8 +41,8 @@ class _PushRequestsState extends State<PushRequests> {
               )),
           backgroundColor: blueGrey4,
         ),
-        body: SafeArea(
-            child: SingleChildScrollView(
+        body: SingleChildScrollView(
+            child: SafeArea(
           child: Container(
               child: Column(children: [
             Align(
