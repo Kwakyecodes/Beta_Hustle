@@ -30,7 +30,7 @@ class _RequestsState extends State<Requests> {
       width: MediaQuery.of(context).size.width - 100,
     child: InkWell(
     onTap: () {
-      pendingJobsDetails(context,name, date, time, amount);
+      completedJobsDetails(context,name, date, time, amount);
     },
       child: Align(
         alignment: Alignment.centerLeft,
@@ -248,7 +248,7 @@ class _RequestsState extends State<Requests> {
                       )),)),
               Container(
                 height:5,
-                color: textfieldColor
+                color: textFieldColor
               ),
               SizedBox(height:35),
               Align(
@@ -285,7 +285,7 @@ class _RequestsState extends State<Requests> {
               Container(
                   width: 355,
                   height:1,
-                  color: textfieldColor
+                  color: textFieldColor
               ),
               SizedBox(height:7),
               Container(
@@ -311,7 +311,7 @@ class _RequestsState extends State<Requests> {
               Container(
                   width: 355,
                   height:1,
-                  color: textfieldColor
+                  color: textFieldColor
               ),
               SizedBox(height:7),
               Container(
@@ -335,7 +335,7 @@ class _RequestsState extends State<Requests> {
                   )),
               Container(
                   height:5,
-                  color: textfieldColor
+                  color: textFieldColor
               ),
               SizedBox(height:35),
               Align(
@@ -521,7 +521,7 @@ class _RequestsState extends State<Requests> {
                                 )),)),
                       Container(
                           height:5,
-                          color: textfieldColor
+                          color: textFieldColor
                       ),
                       SizedBox(height:35),
                       Align(
@@ -592,7 +592,7 @@ class _RequestsState extends State<Requests> {
 
                       Container(
                           height:5,
-                          color: textfieldColor
+                          color: textFieldColor
                       ),
                       SizedBox(height:35),
                       Align(
@@ -916,7 +916,7 @@ class _RequestsState extends State<Requests> {
                         margin: const EdgeInsets.only(left:18,right: 18),
                           width: 200,
                           height:1,
-                          color: textfieldColor
+                          color: textFieldColor
                       ),
                       SizedBox(height:4),
                       Container(
@@ -940,7 +940,7 @@ class _RequestsState extends State<Requests> {
                           )),
                       Container(
                           height:5,
-                          color: textfieldColor
+                          color: textFieldColor
                       ),
                       SizedBox(height:35),
                       Align(

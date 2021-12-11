@@ -2,6 +2,7 @@
 import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
+import 'package:beta_hustle/Screens/User/user_profile.dart';
 import 'package:beta_hustle/chat_files/screens/home_screen.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: Job.mainAppNav,
       routes: <String, WidgetBuilder>{
 
-        '/signup':(BuildContext context)=> new SignUpPage(),
+        //'/signup':(BuildContext context)=> new SignUpPage(),
         '/jobRequest':(BuildContext context)=> new MainPage(),
         '/requests' : (BuildContext context)=> new Requests()
       },
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: UserProfile(),
 
     );
   }
