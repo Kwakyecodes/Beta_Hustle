@@ -1,47 +1,41 @@
-
-//import 'package:beta_hustle/Screens/Both/requests.dart'
-//hide Colors
-//hide RoundedRectangleBorder;
-import 'package:beta_hustle/Screens/User/pushrequests.dart';
-
-import 'package:beta_hustle/Screens/Both/login_page.dart';
-
+import 'package:beta_hustle/Screens/Both/requests.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
 import 'package:beta_hustle/Screens/Both/requestui.dart';
-import 'package:beta_hustle/models/user.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'main_page_content.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+import 'handyman_page_content.dart';
+
+
+
+class HandyMainPage extends StatefulWidget {
+  const HandyMainPage({Key? key}) : super(key: key);
 
   @override
-  _MainPageState createState() => _MainPageState();
+  _HandyMainPageState createState() => _HandyMainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
-  final user = new NUser();
-  int currentIndex = 0;
-  IconData icon1 = Icons.home;
-  IconData icon2 = Icons.favorite_border;
-  IconData icon3 = Icons.add_box_outlined;
-  IconData icon4 = Icons.history;
-  IconData icon5 = Icons.settings_outlined;
+class _HandyMainPageState extends State<HandyMainPage> {
 
-  Color color1 = Colors.white;
-  Color color2 = Colors.blueGrey;
-  Color color3 = Colors.blueGrey;
-  Color color4 = Colors.blueGrey;
-  Color color5 = Colors.blueGrey;
+  int currentIndex=0;
+  IconData icon1=Icons.home;
+  IconData icon2=Icons.favorite_border;
+  IconData icon3=Icons.add_box_outlined;
+  IconData icon4=Icons.history;
+  IconData icon5=Icons.settings_outlined;
+
+  Color color1=Colors.white;
+  Color color2=Colors.blueGrey;
+  Color color3=Colors.blueGrey;
+  Color color4=Colors.blueGrey;
+  Color color5=Colors.blueGrey;
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   final List<Job> jobList = Job.getJob();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: false,
@@ -57,29 +51,24 @@ class _MainPageState extends State<MainPage> {
                 child: DrawerHeader(
                   decoration: BoxDecoration(
                     color: Colors.white,
+
                   ),
                   child: Row(
                     children: [
-                      Icon(
-                        Icons.account_circle,
-                        size: 60,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
+                      Icon(Icons.account_circle,size: 60,),
+                      SizedBox(width: 16,),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Profile Name",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 6.0,
-                          ),
+                          Text("Profile Name",style: TextStyle(
+                            fontSize: 16.0,
+
+
+                          ),),
+                          SizedBox(height: 6.0,),
                           Text("Edit Profile"),
+
+
                         ],
                       )
                     ],
@@ -87,60 +76,49 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               Divider(),
-              SizedBox(
-                height: 12,
-              ),
+              SizedBox(height: 12,),
               ListTile(
                 leading: Icon(Icons.account_balance_wallet_outlined),
-                title: Text(
-                  "Wallet",
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                title: Text("Wallet",style: TextStyle(
+                    fontSize: 16.0
+                ),),
               ),
               ListTile(
                 leading: Icon(Icons.history),
-                title: Text(
-                  "Request History",
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                title: Text("My Orders",style: TextStyle(
+                    fontSize: 16.0
+                ),),
               ),
               ListTile(
-                onTap: () {
-                  Navigator.pushNamed(context, '/chats');
-                },
                 leading: Icon(Icons.message),
-                title: Text(
-                  "Messages",
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                title: Text("Messages",style: TextStyle(
+                    fontSize: 16.0
+                ),),
               ),
               ListTile(
                 leading: Icon(Icons.help),
-                title: Text(
-                  "Help",
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                title: Text("Help",style: TextStyle(
+                    fontSize: 16.0
+                ),),
               ),
               ListTile(
                 leading: Icon(Icons.info),
-
-                title: Text(
-                  "About",
-                  style: TextStyle(fontSize: 16.0),
-                ),
+                title: Text("About",style: TextStyle(
+                    fontSize: 16.0
+                ),),
               ),
-              ListTile(
-                leading: Icon(Icons.logout_sharp),
-                title: Text(
-                  "Logout",
-                  style: TextStyle(fontSize: 16.0),
+              InkWell(
+                child: ListTile(
+                  leading: Icon(Icons.settings_power_outlined),
+                  title: Text("Sign Out",style: TextStyle(
+                      fontSize: 16.0
+                  ),),
                 ),
-                onTap: () {
-                  final user = new NUser();
-                  user.signout(); //calling the signout method from user class
+                onTap: (){
+                  Navigator.of(context).pushReplacementNamed(
+                      '/loginPage');
                 },
-              ),
-
+              )
             ],
           ),
         ),
@@ -168,17 +146,23 @@ class _MainPageState extends State<MainPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 Container(
+
+
                   padding: EdgeInsets.all(8),
                   height: 60,
                   color: Colors.white,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+
+
                       GestureDetector(
-                        onTap: () {
+                        onTap: (){
                           scaffoldKey.currentState!.openDrawer();
+
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -189,93 +173,92 @@ class _MainPageState extends State<MainPage> {
                                   color: Colors.black,
                                   blurRadius: 6.0,
                                   spreadRadius: 0.5,
-                                  offset: Offset(0.7, 0.7),
+                                  offset: Offset(
+                                      0.7,0.7
+                                  ),
                                 )
-                              ]),
+                              ]
+                          ),
                           child: CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Text(
-                              "B",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Lobster",
-                                  fontSize: 26,
-                                  color: Colors.blueGrey.shade900),
+                            child: Text("B",style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Lobster",
+                                fontSize: 26,
+                                color: Colors.blueGrey.shade900
+                            ),
                             ),
                             radius: 22,
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 110,
-                      ),
+                      SizedBox(width: 110,),
                       Container(
                         child: IconButton(
-                          icon: Icon(
-                            Icons.notifications_active_outlined,
-                            color: Colors.blueGrey.shade900,
-                          ),
-                          onPressed: () {},
+                          icon: Icon(Icons.notifications_active_outlined,color: Colors.blueGrey.shade900,),
+                          onPressed: (){},
                         ),
                       ),
                       Container(
                         child: IconButton(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.blueGrey.shade900,
-                          ),
-                          onPressed: () {},
+                          icon: Icon(Icons.search,color: Colors.blueGrey.shade900,),
+                          onPressed: (){},
                         ),
                       ),
                       Container(
                         child: IconButton(
-                          icon: Icon(
-                            Icons.message,
-                            color: Colors.blueGrey.shade900,
-                          ),
-                          onPressed: () {},
+                          icon: Icon(Icons.message,color: Colors.blueGrey.shade900,),
+                          onPressed: (){},
                         ),
                       )
+
                     ],
                   ),
+
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10,),
+
+
+
                 Expanded(
                   child: Navigator(
                     key: Job.mainListNav,
                     initialRoute: '/homepage',
-                    onGenerateRoute: (RouteSettings settings) {
+                    onGenerateRoute: (RouteSettings settings){
                       Widget page;
-                      switch (settings.name) {
+                      switch(settings.name){
                         case '/homepage':
-                          page = HomePage();
+                          page=HomePage();
                           break;
                         case '/favoritespage':
-                          page = HomePage();
+                          page=HomePage();
                           break;
-                        case '/pushrequests':
-                          page = PushRequests();
+                        case '/shoppinglistpage':
+                          page=HomePage();
                           break;
-                        // case '/requestpage':
-                        //   page = Requests();
-                        //   break;
+                        case '/requestpage':
+                          page=Requests();
+                          break;
                         default:
-                          page = HomePage();
+                          page=HomePage();
                           break;
                       }
                       return PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => page,
-                          transitionDuration: const Duration(seconds: 0));
+                          pageBuilder: (_,__,___)=>page,
+                          transitionDuration: const Duration(seconds: 0)
+                      );
                     },
                   ),
                 ),
+
+
+
+
               ],
+
             ),
-            SizedBox(
-              height: 100,
-            ),
+
+            SizedBox(height: 100,),
             Positioned(
               bottom: 0,
               left: 0,
@@ -283,12 +266,14 @@ class _MainPageState extends State<MainPage> {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade900,
+
+
                 ),
 
                 height: 55,
                 //padding: EdgeInsets.only(bottom: 10),
 
-                child: Row(
+                child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
@@ -297,32 +282,39 @@ class _MainPageState extends State<MainPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         child: IconButton(
+
                           icon: Icon(
                             icon1,
-                            color: color1,
-                          ),
-                          onPressed: () {
+                            color: color1,),
+                          onPressed: (){
+
+
                             setState(() {
-                              currentIndex = 1;
-                              if (currentIndex == 1) {
-                                icon1 = Icons.home;
-                                icon2 = Icons.favorite_outline;
-                                icon3 = Icons.add_box;
-                                icon4 = Icons.history;
-                                icon5 = Icons.settings_outlined;
-                                color1 = Colors.white;
+                              currentIndex=1;
+                              if (currentIndex==1){
+
+                                icon1=Icons.home;
+                                icon2= Icons.favorite_outline;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings_outlined;
+                                color1= Colors.white;
                                 color2 = Colors.blueGrey;
-                                color3 = Colors.blueGrey;
-                                color4 = Colors.blueGrey;
-                                color5 = Colors.blueGrey;
+                                color3=Colors.blueGrey;
+                                color4=Colors.blueGrey;
+                                color5=Colors.blueGrey;
                               }
                             });
 
-                            Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/homepage');
+
+
+                            Job.mainListNav.currentState?.pushReplacementNamed('/homepage');
+
                           },
+
                         ),
                       ),
+
                     ),
                     Container(
                       child: Material(
@@ -334,26 +326,29 @@ class _MainPageState extends State<MainPage> {
                             icon2,
                             color: color2,
                           ),
-                          onPressed: () {
+                          onPressed: (){
+
+
                             setState(() {
-                              currentIndex = 2;
-                              if (currentIndex == 2) {
-                                icon1 = Icons.home_outlined;
-                                icon2 = Icons.favorite;
-                                icon3 = Icons.add_box;
-                                icon4 = Icons.history;
-                                icon5 = Icons.settings_outlined;
-                                color1 = Colors.blueGrey;
+                              currentIndex=2;
+                              if (currentIndex==2){
+                                icon1=Icons.home_outlined;
+                                icon2= Icons.favorite;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings_outlined;
+                                color1= Colors.blueGrey;
                                 color2 = Colors.white;
-                                color3 = Colors.blueGrey;
-                                color4 = Colors.blueGrey;
-                                color5 = Colors.blueGrey;
+                                color3=Colors.blueGrey;
+                                color4=Colors.blueGrey;
+                                color5=Colors.blueGrey;
                               }
                             });
 
-                            Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/favoritespage');
+
+                            Job.mainListNav.currentState?.pushReplacementNamed('/favoritespage');
                           },
+
                         ),
                       ),
                     ),
@@ -363,29 +358,28 @@ class _MainPageState extends State<MainPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         child: IconButton(
-                          icon: Icon(
-                            icon3,
-                            color: color3,
-                          ),
-                          onPressed: () {
+                          icon: Icon(icon3,
+                            color: color3,),
+                          onPressed: (){
+
                             setState(() {
-                              currentIndex = 3;
-                              if (currentIndex == 3) {
-                                icon1 = Icons.home_outlined;
-                                icon2 = Icons.favorite_outline;
-                                icon3 = Icons.add_box;
-                                icon4 = Icons.history;
-                                icon5 = Icons.settings_outlined;
-                                color1 = Colors.blueGrey;
+                              currentIndex=3;
+                              if (currentIndex==3){
+                                icon1=Icons.home_outlined;
+                                icon2= Icons.favorite_outline;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings_outlined;
+                                color1= Colors.blueGrey;
                                 color2 = Colors.blueGrey;
-                                color3 = Colors.white;
-                                color4 = Colors.blueGrey;
-                                color5 = Colors.blueGrey;
+                                color3=Colors.white;
+                                color4=Colors.blueGrey;
+                                color5=Colors.blueGrey;
                               }
                             });
-                            Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/settingspage');
+                            Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
                           },
+
                         ),
                       ),
                     ),
@@ -395,26 +389,26 @@ class _MainPageState extends State<MainPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         child: IconButton(
-                          icon: Icon(icon4, color: color4),
-                          onPressed: () {
+                          icon: Icon(icon4,color: color4),
+                          onPressed: (){
                             setState(() {
-                              currentIndex = 4;
-                              if (currentIndex == 4) {
-                                icon1 = Icons.home_outlined;
-                                icon2 = Icons.favorite_outline;
-                                icon3 = Icons.add_box;
-                                icon4 = Icons.history;
-                                icon5 = Icons.settings_outlined;
-                                color1 = Colors.blueGrey;
+                              currentIndex=4;
+                              if (currentIndex==4){
+                                icon1=Icons.home_outlined;
+                                icon2= Icons.favorite_outline;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings_outlined;
+                                color1= Colors.blueGrey;
                                 color2 = Colors.blueGrey;
-                                color3 = Colors.blueGrey;
-                                color4 = Colors.white;
-                                color5 = Colors.blueGrey;
+                                color3=Colors.blueGrey;
+                                color4= Colors.white;
+                                color5=Colors.blueGrey;
                               }
                             });
-                            Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/requestpage');
+                            Job.mainListNav.currentState?.pushReplacementNamed('/requestpage');
                           },
+
                         ),
                       ),
                     ),
@@ -424,38 +418,40 @@ class _MainPageState extends State<MainPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         child: IconButton(
-                          icon: Icon(
-                            icon5,
-                            color: color5,
-                          ),
-                          onPressed: () {
+
+                          icon: Icon(icon5,color: color5,),
+                          onPressed: (){
                             setState(() {
-                              currentIndex = 5;
-                              if (currentIndex == 5) {
-                                icon1 = Icons.home_outlined;
-                                icon2 = Icons.favorite_outline;
-                                icon3 = Icons.add_box;
-                                icon4 = Icons.history;
-                                icon5 = Icons.settings;
-                                color1 = Colors.blueGrey;
+                              currentIndex=5;
+                              if (currentIndex==5){
+                                icon1=Icons.home_outlined;
+                                icon2= Icons.favorite_outline;
+                                icon3= Icons.add_box;
+                                icon4=Icons.history;
+                                icon5=Icons.settings;
+                                color1= Colors.blueGrey;
                                 color2 = Colors.blueGrey;
-                                color3 = Colors.blueGrey;
-                                color4 = Colors.blueGrey;
-                                color5 = Colors.white;
+                                color3=Colors.blueGrey;
+                                color4= Colors.blueGrey;
+                                color5=Colors.white;
                               }
                             });
 
-                            Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/settingspage');
+                            Job.mainListNav.currentState?.pushReplacementNamed('/settingspage');
                           },
+
                         ),
                       ),
                     ),
+
                   ],
-                ),
+                ) ,
+
               ),
             ),
+
           ],
+
         ),
       ),
       // bottomNavigationBar: BottomNavigationBar(
@@ -524,5 +520,21 @@ class _MainPageState extends State<MainPage> {
       //   ],
       // ),
     );
+
   }
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

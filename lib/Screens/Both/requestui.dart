@@ -61,7 +61,7 @@ class JobDetailsHaderWithPoster extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          JobPoster(poster: job!.poster.toString() ),
+          JobPoster(poster: job!.images[1].toString() ),
           SizedBox(width: 16),
 
           Expanded(child: JobDetailsHeader(job: job,))
@@ -106,7 +106,7 @@ class JobDetailsHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("${job!.year} . ${job!.genre.toUpperCase()}",style: TextStyle(
+        Text("${job!.username} . ${job!.endDate.toUpperCase()}",style: TextStyle(
           fontWeight: FontWeight.bold,
           color:Colors.cyan,
 
@@ -148,7 +148,7 @@ class JobsDetailsCast extends StatelessWidget {
       child: Column(
         children: [
           JobField(field: "Cast", value: job!.actors),
-          JobField(field: "Directors", value: job!.director),
+          JobField(field: "Directors", value: job!.requestTitle),
           JobField(field: "Awards",value: job!.awards)
         ],
       ),
@@ -186,7 +186,7 @@ class HorizontalLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 4.0),
       child: Container(
 
         height: 0.5,

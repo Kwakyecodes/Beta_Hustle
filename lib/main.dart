@@ -1,7 +1,10 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
 // @dart=2.9
 import 'package:beta_hustle/Screens/Both/login_page.dart';
+
 import 'package:beta_hustle/Screens/Both/requests.dart';
+import 'package:beta_hustle/Screens/Handyman/handyman_main_page.dart';
+
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
 import 'package:beta_hustle/chat_files/screens/home_screen.dart';
@@ -23,6 +26,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: [
         Provider<AuthenticationProvider>(
@@ -43,6 +47,8 @@ class MyApp extends StatelessWidget {
         },
         debugShowCheckedModeBanner: false,
       ),
+
+
     );
   }
 }

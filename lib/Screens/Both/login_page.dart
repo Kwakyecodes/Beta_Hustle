@@ -17,6 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   bool passwordObscure = true;
   bool isChecked = false;
   int id = 1;
@@ -31,6 +32,12 @@ class _LoginPageState extends State<LoginPage> {
   final alerts = new Alerts();
   final loginEmail = new TextEditingController();
   final loginPassword = new TextEditingController();
+
+
+  bool loginState=true;
+  bool passwordObscure=true;
+  IconData iconType=Icons.visibility_outlined;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +60,78 @@ class _LoginPageState extends State<LoginPage> {
             // crossAxisAlignment: CrossAxisAlignment.start,
 
             children: [
+
+             Container(
+               child: Stack(
+                 children: [
+
+                  Container(
+                          alignment: Alignment(1.0,0.0),
+                          padding: EdgeInsets.only(top:30, right: 5),
+                        child: Column(
+                          children: [
+
+                            LiteRollingSwitch(
+
+                              colorOn: Colors.blueGrey,
+                              colorOff: Color(0XFF6A62B7),
+                              value: true,
+                              textOn: "User",
+
+                              iconOn: Icons.account_circle_outlined,
+                              textOff: "Handyman",
+                              iconOff: Icons.attach_money,
+                              onChanged: (bool state){
+                                loginState=state;
+                                  print("$loginState");
+                              },
+
+                            )
+
+                          ],
+                        ),
+                  ),
+
+                   Container(
+                     padding: EdgeInsets.fromLTRB(20.0, 90.0, 0.0, 0.0),
+                     child: Text(
+                       'Beta',
+                       style: TextStyle(
+                         color: Colors.blueGrey.shade900,
+                         fontSize: 60,
+                         fontWeight: FontWeight.bold,
+                         fontFamily: "Lobster"
+                       ),
+                     ),
+                   ),
+                   Container(
+                     padding: EdgeInsets.fromLTRB(35.0, 150.0, 0.0, 0.0),
+                     child: Text(
+                       'Hustle',
+                       style: TextStyle(
+                           color: Colors.blueGrey.shade900,
+                           fontSize: 60,
+                           fontWeight: FontWeight.bold,
+                           fontFamily: "Lobster"
+                       ),
+                     ),
+                   ),
+                   Container(
+                     padding: EdgeInsets.fromLTRB(180.0, 145.0, 0.0, 0.0),
+                     child: Text(
+                       '.',
+                       style: TextStyle(
+                           fontSize: 60,
+                           fontWeight: FontWeight.bold,
+                         color: Color(0XFF6A62B7)
+                       ),
+                     ),
+                   ),
+
+                 ],
+               ),
+             ),
+
               Container(
                 child: Stack(
                   children: [
@@ -215,6 +294,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ),
+
                     SizedBox(height: 20.0),
                     ElevatedButton(
                         onPressed: () {
@@ -243,6 +323,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 60,
                     ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
