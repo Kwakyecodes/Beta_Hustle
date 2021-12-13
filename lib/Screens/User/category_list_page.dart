@@ -20,6 +20,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final user = new NUser();
   int currentIndex = 0;
   IconData icon1 = Icons.home;
   IconData icon2 = Icons.favorite_border;

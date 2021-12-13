@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:beta_hustle/main.dart';
 import 'package:beta_hustle/Screens/Both/login_page.dart';
@@ -110,5 +111,15 @@ class NUser {
     //   alerts.user_toast("Unable to verify Phone ");
     //   Navigator.of(context).pushNamed('/signup');
     // }
+  }
+
+  Future<String> userInfo() async {
+    var name;
+    usersRef.child("fname").once().then((DataSnapshot data) {
+      print(data.value);
+      print(data.key);
+       name = data.value;
+    });
+    return name;
   }
 }
