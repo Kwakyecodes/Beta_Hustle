@@ -4,6 +4,7 @@ import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/Screens/Both/requests.dart';
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
+import 'package:beta_hustle/chat_files/screens/home_screen.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +36,10 @@ class MyApp extends StatelessWidget {
         title: 'Firebase Authentication',
         home: Authenticate(),
         routes: <String, WidgetBuilder>{
-          '/signup': (BuildContext context) => new SignUpPage(),
-          '/requests': (BuildContext context) => new Requests(),
-          '/pushrequests': (BuildContext context) => new PushRequests()
+          //'/signup': (BuildContext context) => new SignUpPage(),
+          //'/requests': (BuildContext context) => new Requests(),
+          '/pushrequests': (BuildContext context) => new PushRequests(),
+          '/chats': (BuildContext context) => new HomeScreen()
         },
         debugShowCheckedModeBanner: false,
       ),

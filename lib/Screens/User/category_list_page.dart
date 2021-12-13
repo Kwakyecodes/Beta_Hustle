@@ -1,4 +1,6 @@
-import 'package:beta_hustle/Screens/Both/requests.dart';
+//import 'package:beta_hustle/Screens/Both/requests.dart'
+//hide Colors
+//hide RoundedRectangleBorder;
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
@@ -98,6 +100,9 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, '/chats');
+                },
                 leading: Icon(Icons.message),
                 title: Text(
                   "Messages",
@@ -246,9 +251,9 @@ class _MainPageState extends State<MainPage> {
                         case '/pushrequests':
                           page = PushRequests();
                           break;
-                        case '/requestpage':
-                          page = Requests();
-                          break;
+                        // case '/requestpage':
+                        //   page = Requests();
+                        //   break;
                         default:
                           page = HomePage();
                           break;

@@ -19,7 +19,8 @@ class formValidate {
     }
   }
 
-  bool signup(BuildContext context, String fname, String sname, String email, String phone, String password, String cpassword, String gender) {
+  bool signup(BuildContext context, String fname, String sname, String email,
+      String phone, String password, String cpassword, String gender) {
     bool valid = false;
     if (!email.contains("@")) {
       alerts.user_toast("The email is invalid");
@@ -27,9 +28,9 @@ class formValidate {
       alerts.user_toast("The password must be at least six characters");
     } else if (fname.length == 0 || sname.length == 0) {
       alerts.user_toast("The Names are required");
-      // } else if (phone.length == 0 || phone[0] != '+') {
-      //   alerts.user_toast("Please enter a phone number in foriegn format ");
-      // } else if (password != cpassword) {
+    } else if (phone.length == 0 || phone[0] != '+') {
+      alerts.user_toast("Please enter a phone number in foriegn format ");
+    } else if (password != cpassword) {
       alerts.user_toast("The Passwords don't Match");
     } else {
       //user.signUp(fname, sname, email, phone, password, context, gender);

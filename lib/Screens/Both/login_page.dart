@@ -2,6 +2,7 @@ import 'package:beta_hustle/models/colors.dart';
 import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/strings.dart';
 import 'package:beta_hustle/models/user.dart';
+import 'package:beta_hustle/notifications/alerts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
@@ -27,6 +28,9 @@ class _LoginPageState extends State<LoginPage> {
   IconData iconType = Icons.visibility_outlined;
   final validate = new formValidate();
   final user = new NUser();
+  final alerts = new Alerts();
+  final loginEmail = new TextEditingController();
+  final loginPassword = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                                 //color: Colors.blueGrey,
                                 borderRadius: BorderRadius.circular(100)),
                             child: TextField(
-                              controller: Email,
+                              controller: loginEmail,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -160,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                             width: 230,
                             child: TextField(
-                              controller: Password,
+                              controller: loginPassword,
                               decoration: InputDecoration(
                                 hintText: 'Password',
                                 border: InputBorder.none,
@@ -215,8 +219,9 @@ class _LoginPageState extends State<LoginPage> {
                     ElevatedButton(
                         onPressed: () {
                           //Navigator.of(context).pushReplacementNamed('/jobRequest');
-                          final validate = new formValidate();
-                          validate.login(context, Email.text, Password.text);
+
+                          validate.login(
+                              context, loginEmail.text, loginPassword.text);
                         },
                         style: ElevatedButton.styleFrom(
                             primary: Colors.blueGrey.shade900,
@@ -328,7 +333,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: fname,
+                keyboardType: TextInputType.name,
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: textFont,
@@ -355,7 +362,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: sname,
+                keyboardType: TextInputType.name,
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: textFont,
@@ -378,7 +387,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: phone,
+                keyboardType: TextInputType.phone,
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: textFont,
@@ -401,7 +412,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: Email,
+                keyboardType: TextInputType.emailAddress,
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: textFont,
@@ -424,7 +437,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: Password,
+                keyboardType: TextInputType.text,
                 obscureText: hideSetPassword,
                 style: TextStyle(
                   color: Colors.black,
@@ -464,7 +479,9 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               height: textFieldHeight,
               width: textFieldWidth,
-              child: TextField(
+              child: TextFormField(
+                controller: cpassword,
+                keyboardType: TextInputType.text,
                 obscureText: hideConfirmedPassword,
                 style: TextStyle(
                   color: Colors.black,
@@ -591,24 +608,29 @@ class _LoginPageState extends State<LoginPage> {
               foregroundColor: Colors.white,
               onPressed: () {
                 // Respond to button press
-                bool valid = validate.signup(
-                    context,
-                    fname.text,
-                    sname.text,
-                    Email.text,
-                    phone.text,
-                    Password.text,
-                    cpassword.text,
-                    radioButtonItem);
-                if (valid == true) {
-                  setState(() {
-                    int verifycode = fname.text.length * 200 + 430;
-                    // fotp.sendOtp(phone.text);
-                    otpOn = true;
-                  });
-                  //  user.verifyPhone(fname.text, sname.text, email.text, phone.text, password.text, context, _value, verifycode);
-                  user.signUp(fname.text, sname.text, Email.text, phone.text,
-                      Password.text, context, radioButtonItem);
+                if (isChecked == true) {
+                  bool valid = validate.signup(
+                      context,
+                      fname.text,
+                      sname.text,
+                      Email.text.trim(),
+                      phone.text,
+                      Password.text,
+                      cpassword.text,
+                      radioButtonItem);
+                  if (valid == true) {
+                    setState(() {
+                      int verifycode = fname.text.length * 200 + 430;
+                      // fotp.sendOtp(phone.text);
+                      otpOn = true;
+                    });
+                    //  user.verifyPhone(fname.text, sname.text, email.text, phone.text, password.text, context, _value, verifycode);
+                    user.signUp(fname.text, sname.text, Email.text.trim(),
+                        phone.text, Password.text, context, radioButtonItem);
+                  }
+                } else {
+                  alerts.user_toast(
+                      "Please agree to terms of Beta Hustle to continue signup");
                 }
               },
               label: Row(
