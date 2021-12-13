@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "487441194604",
+    "firebase_url": "https://beta-hustle-default-rtdb.firebaseio.com",
+    "project_id": "beta-hustle",
+    "storage_bucket": "beta-hustle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487441194604:android:8392000a27e0fb450bc249",
+        "android_client_info": {
+          "package_name": "com.domitechnologies.betahustle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487441194604-utdgbcrqmm2k3e8neuh1bcu30v77aclc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.domitechnologies.betahustle",
+            "certificate_hash": "1d64582dbbff9400f6a9bb36f8ea2afc87288d7c"
+          }
+        },
+        {
+          "client_id": "487441194604-r193ociqbcq9uoubaa0nr7o7mj06snnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTBSwtTfmmp9zvqWx7amCifxz67QiZB88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487441194604-r193ociqbcq9uoubaa0nr7o7mj06snnn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "487441194604-rp2pa3tll1oujsn5djbclracfmg8mjub.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.domitechnologies.betaHustle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
