@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: UserProfile(),
+      home: PushRequests(),
 
     );
   }

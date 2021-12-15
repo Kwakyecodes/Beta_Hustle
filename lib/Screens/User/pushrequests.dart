@@ -99,7 +99,7 @@ class _PushRequestsState extends State<PushRequests> {
                       ),
                     )
                   ),
-                  SizedBox(height: 80),
+                  SizedBox(height: 60),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -180,6 +180,51 @@ class _PushRequestsState extends State<PushRequests> {
                     child: Container(
                       margin: const EdgeInsets.only(left:20,right:20),
                       child: Row(
+                        children: [
+                          Text("Max number of handymen",
+                            style: TextStyle(
+                              fontSize:textFieldSize,
+                              fontFamily: textFont,
+                              color: Colors.black,
+                            )
+                          ),
+                          SizedBox(width:15),
+                          Container(
+                            width: 80,
+                            child: Padding(padding: EdgeInsets.only(left:10,right:10),
+                              child: TextField(
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: textFont,
+                                  fontSize: textFieldSize,
+                                ),
+                                showCursor: true,
+                                cursorColor: Colors.black,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black45,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                          ),
+                        ]
+                      )
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(left:20,right:20),
+                      child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
@@ -242,7 +287,7 @@ class _PushRequestsState extends State<PushRequests> {
                       )
                     )
                   ),
-                  SizedBox(height: 120),
+                  SizedBox(height: 100),
                   Align(
                     alignment: Alignment.center,
                     child: Container(
