@@ -1,4 +1,5 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
+import 'package:beta_hustle/Screens/Both/handyman_profile.dart';
 import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
 
       theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
       debugShowCheckedModeBanner: false,
-      home: PushRequests(),
+      home: HandymanProfile(),
 
     );
   }

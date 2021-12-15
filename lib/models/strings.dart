@@ -13,6 +13,7 @@ const loginButton = "LOGIN";
 const hintFirstName = "First Name";
 const hintLastName = "Last Name";
 const hintPhoneNumber = "Phone Number";
+const rating = "4.3";
 const hintConfirmPassword="Confirm Password";
 const hintPassword = 'Password';
 const hintEmail = 'Email Address';
