@@ -7,12 +7,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:beta_hustle/notifications/alerts.dart';
 import 'package:beta_hustle/models/db_ref.dart';
 import 'package:telephony/telephony.dart';
+import 'package:provider/provider.dart';
 
 String verifyID = "...";
 final Telephony telephony = Telephony.instance;
 
 class NUser {
   final alerts = new Alerts();
+  String username = "";
   login(String email, String password, BuildContext context) async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final User? _FirebaseUser = (await _auth
@@ -64,7 +66,7 @@ class NUser {
         "phone": phone.trim(),
         "gender": gender.trim()
       };
-      usersRef.child(_FirebaseUser.uid).set(userData);
+      await usersRef.child(_FirebaseUser.uid).set(userData);
       alerts.user_toast("Account Created Successfully");
       Navigator.of(context).pushNamed('/login_page');
     } else {
@@ -113,13 +115,16 @@ class NUser {
     // }
   }
 
-  Future<String> userInfo() async {
-    var name;
-    usersRef.child("fname").once().then((DataSnapshot data) {
+  userInfo(BuildContext context) async {
+    final firebaseUser = context.watch<User>();
+    usersRef
+        .child(firebaseUser.uid)
+        .child("fname")
+        .once()
+        .then((DataSnapshot data) {
       print(data.value);
       print(data.key);
-       name = data.value;
+      username = data.value.toString();
     });
-    return name;
   }
 }

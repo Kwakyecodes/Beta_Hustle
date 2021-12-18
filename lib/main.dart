@@ -7,6 +7,7 @@ import 'package:beta_hustle/Screens/Handyman/handyman_main_page.dart';
 
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
+import 'package:beta_hustle/Screens/User/user_profile.dart';
 import 'package:beta_hustle/chat_files/screens/home_screen.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,7 +27,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return MultiProvider(
       providers: [
         Provider<AuthenticationProvider>(
@@ -43,12 +43,11 @@ class MyApp extends StatelessWidget {
           //'/signup': (BuildContext context) => new SignUpPage(),
           //'/requests': (BuildContext context) => new Requests(),
           '/pushrequests': (BuildContext context) => new PushRequests(),
-          '/chats': (BuildContext context) => new HomeScreen()
+          '/chats': (BuildContext context) => new HomeScreen(),
+          '/userprofile': (BuildContext context) => new UserProfile()
         },
         debugShowCheckedModeBanner: false,
       ),
-
-
     );
   }
 }

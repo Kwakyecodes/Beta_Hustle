@@ -1,18 +1,20 @@
-
 //import 'package:beta_hustle/Screens/Both/requests.dart'
 //hide Colors
 //hide RoundedRectangleBorder;
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
 
 import 'package:beta_hustle/Screens/Both/login_page.dart';
+import 'package:beta_hustle/models/db_ref.dart';
 
 import 'package:beta_hustle/models/job_descriptions.dart';
 
 import 'package:beta_hustle/Screens/Both/requestui.dart';
 import 'package:beta_hustle/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 
 import 'main_page_content.dart';
 
@@ -25,6 +27,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final user = new NUser();
+  List userinfo = [];
   int currentIndex = 0;
   IconData icon1 = Icons.home;
   IconData icon2 = Icons.favorite_border;
@@ -41,6 +44,7 @@ class _MainPageState extends State<MainPage> {
   final List<Job> jobList = Job.getJob();
   @override
   Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
@@ -53,39 +57,57 @@ class _MainPageState extends State<MainPage> {
           child: ListView(
             children: [
               Container(
-                height: 165.0,
-                child: DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.account_circle,
-                        size: 60,
-                      ),
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Profile Name",
-                            style: TextStyle(
-                              fontSize: 16.0,
+                  height: 165.0,
+                  child: StreamBuilder(
+                      stream: usersRef.child(firebaseUser.uid).onValue,
+                      builder: (context, AsyncSnapshot<Event> snapshot) {
+                        if (snapshot.hasData) {
+                          userinfo.clear();
+                          DataSnapshot dataValues = snapshot.data!.snapshot;
+                          Map<dynamic, dynamic> values = dataValues.value;
+                          values.forEach((key, values) {
+                            userinfo.add(values);
+                          });
+                          return DrawerHeader(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
                             ),
-                          ),
-                          SizedBox(
-                            height: 6.0,
-                          ),
-                          Text("Edit Profile"),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.account_circle,
+                                  size: 60,
+                                ),
+                                SizedBox(
+                                  width: 16,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Welcome, " + userinfo[1],
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 6.0,
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, '/userprofile');
+                                      },
+                                      child: Text("Edit Profile"),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        }
+                        return Text(firebaseUser.uid);
+                      })),
               Divider(),
               SizedBox(
                 height: 12,
@@ -123,7 +145,6 @@ class _MainPageState extends State<MainPage> {
               ),
               ListTile(
                 leading: Icon(Icons.info),
-
                 title: Text(
                   "About",
                   style: TextStyle(fontSize: 16.0),
@@ -140,7 +161,6 @@ class _MainPageState extends State<MainPage> {
                   user.signout(); //calling the signout method from user class
                 },
               ),
-
             ],
           ),
         ),
