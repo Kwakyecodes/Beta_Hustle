@@ -65,9 +65,11 @@ class _MainPageState extends State<MainPage> {
                           userinfo.clear();
                           DataSnapshot dataValues = snapshot.data!.snapshot;
                           Map<dynamic, dynamic> values = dataValues.value;
-                          values.forEach((key, values) {
-                            userinfo.add(values);
-                          });
+                          if (values != null) {
+                            values.forEach((key, values) {
+                              userinfo.add(values);
+                            });
+                          }
                           return DrawerHeader(
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -85,7 +87,7 @@ class _MainPageState extends State<MainPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Welcome, " + userinfo[1],
+                                      userinfo[1],
                                       style: TextStyle(
                                         fontSize: 16.0,
                                       ),
