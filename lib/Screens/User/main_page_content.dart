@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                                 Positioned(
                                     top: 35.0,
                                     right:15,
-                                    child: JobImage(jobList[index].poster)
+                                    child: JobImage(jobList[index].images[1])
 
                                 ),
 
@@ -278,7 +278,7 @@ class JobsListViewDetails extends StatelessWidget {
       body: ListView(
         children: [
 
-          JobDetailsThumbnail(thumbnail: job!.poster),
+          JobDetailsThumbnail(thumbnail: job!.images[1]),
           JobDetailsHaderWithPoster(job: job),
           HorizontalLine(),
           JobsDetailsCast(job: job,),

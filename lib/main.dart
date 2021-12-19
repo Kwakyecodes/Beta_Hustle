@@ -1,48 +1,73 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
+
 import 'package:beta_hustle/Screens/Both/handyman_profile.dart';
+
+// @dart=2.9
+r
 import 'package:beta_hustle/Screens/Both/login_page.dart';
+
+import 'package:beta_hustle/Screens/Both/requests.dart';
+import 'package:beta_hustle/Screens/Handyman/handyman_main_page.dart';
+
 import 'package:beta_hustle/Screens/User/category_list_page.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
-import 'package:beta_hustle/Screens/User/user_profile.dart';
 import 'package:beta_hustle/chat_files/screens/home_screen.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
-
-import '/Screens/Both/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'Screens/Both/requests.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'Screens/Both/signup.dart';
-import 'Screens/User/payment.dart';
+import 'authentication.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  //await FirebaseAppCheck.instance.activate(webRecaptchaSiteKey: 'recaptcha-v3-site-key');
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Beta Hustle',
 
-      navigatorKey: Job.mainAppNav,
-      routes: <String, WidgetBuilder>{
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationProvider>(
+          create: (_) => AuthenticationProvider(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) => context.read<AuthenticationProvider>().authState,
+        )
+      ],
+      child: MaterialApp(
+        title: 'Firebase Authentication',
+        home: Authenticate(),
+        routes: <String, WidgetBuilder>{
+          //'/signup': (BuildContext context) => new SignUpPage(),
+          //'/requests': (BuildContext context) => new Requests(),
+          '/pushrequests': (BuildContext context) => new PushRequests(),
+          '/chats': (BuildContext context) => new HomeScreen()
+        },
+        debugShowCheckedModeBanner: false,
+      ),
 
-        //'/signup':(BuildContext context)=> new SignUpPage(),
-        '/jobRequest':(BuildContext context)=> new MainPage(),
-        '/requests' : (BuildContext context)=> new Requests()
-      },
 
-
-      theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
-      debugShowCheckedModeBanner: false,
-      home: HandymanProfile(),
 
     );
   }
-
 }
 
+//this class checks the if the user is signed in already
+class Authenticate extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
 
-
-
+    if (firebaseUser != null) {
+      return MainPage();
+    } else {
+      return LoginPage();
+    }
+  }
+}

@@ -20,15 +20,16 @@ class _PushRequestsState extends State<PushRequests> {
   //   this.setRightIndex(this.currentTime.second);
   // }
 
-
-  Widget build(BuildContext context) { //looks like the keyboard is covering the text field again and there is
-    return Scaffold( //some bottom overflow problem. can someone(Eben) please do your trick to fix it? thanks :)
+  Widget build(BuildContext context) {
+    //looks like the keyboard is covering the text field again
+    return Scaffold(
+        //can someone(Eben) please do your trick to fix it? thanks :)
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},
             icon: Icon(Icons.arrow_back),
             iconSize: cancelIconSize,
-            color:Colors.white,
+            color: Colors.white,
           ),
           centerTitle: true,
           title: const Text(createRequest,
@@ -40,65 +41,61 @@ class _PushRequestsState extends State<PushRequests> {
               )),
           backgroundColor: blueGrey4,
         ),
-
-      body: SingleChildScrollView(
-          child:SafeArea(
-            child: Container(
-              child: Column (
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 170,
-                      margin: const EdgeInsets.only(left: 10,top:20),
-                      child: Row(
-                        children: [
-                          SizedBox(width: 8),
-                          Icon(
-                            Icons.location_on,
-                            color: blueGrey1,
-                            size: cancelIconSize,
-                          ),
-                        Container(
-                            width:120,
-                            child: ButtonTheme(
-                              alignedDropdown: true,
-                              child: DropdownButton(
-                                underline: SizedBox(),
-                                isExpanded: true,
-                                value: _value30,
-                                items: [
-                                  DropdownMenuItem(
-                                    child: Text("Location 1"),
-                                    value: 1,
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Location 2"),
-                                    value: 2,
-                                  ),
-                                  DropdownMenuItem(
-                                    child: Text("Location 3"),
-                                    value: 3,
-                                  ),
-                                ],
-                                onChanged: (int? value) {
-                                  setState(() {
-                                    _value30 = value!;
-                                  });
-                                },
-                              ),),
-                          )
-                        ]
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: blueGrey5,
+        body: SingleChildScrollView(
+            child: SafeArea(
+          child: Container(
+              child: Column(children: [
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  width: 170,
+                  margin: const EdgeInsets.only(left: 10, top: 20),
+                  child: Row(children: [
+                    SizedBox(width: 8),
+                    Icon(
+                      Icons.location_on,
+                      color: blueGrey1,
+                      size: cancelIconSize,
+                    ),
+                    Container(
+                      width: 120,
+                      child: ButtonTheme(
+                        alignedDropdown: true,
+                        child: DropdownButton(
+                          underline: SizedBox(),
+                          isExpanded: true,
+                          value: _value30,
+                          items: [
+                            DropdownMenuItem(
+                              child: Text("Location 1"),
+                              value: 1,
+                            ),
+                            DropdownMenuItem(
+                              child: Text("Location 2"),
+                              value: 2,
+                            ),
+                            DropdownMenuItem(
+                              child: Text("Location 3"),
+                              value: 3,
+                            ),
+                          ],
+                          onChanged: (int? value) {
+                            setState(() {
+                              _value30 = value!;
+                            });
+                          },
                         ),
-                        color: blueGrey5,
-                        borderRadius: BorderRadius.circular(30),
                       ),
                     )
+                  ]),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: blueGrey5,
+                    ),
+                    color: blueGrey5,
+                    borderRadius: BorderRadius.circular(30),
                   ),
+
                   SizedBox(height: 60),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -163,17 +160,66 @@ class _PushRequestsState extends State<PushRequests> {
                               hintText: "Short Description of job",
                               border: InputBorder.none,
                             ),
+
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black45,
+                          DropdownMenuItem(
+                            child: Text("Job 1"),
+                            value: 2,
                           ),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(7),
-                        ),
-                      )
+                          DropdownMenuItem(
+                            child: Text("Job 2"),
+                            value: 3,
+                          ),
+                        ],
+                        onChanged: (int? value) {
+                          setState(() {
+                            _value31 = value!;
+                          });
+                        },
+                      ),
+                    ),
                   ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                )),
+            SizedBox(height: 20),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  height: 110,
+                  width: 340,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: TextField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: textFont,
+                        fontSize: textFieldSize,
+                      ),
+                      showCursor: true,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        hintText: "Short Description of job",
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black45,
+                    ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+
                   SizedBox(height:20),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -226,10 +272,12 @@ class _PushRequestsState extends State<PushRequests> {
                       margin: const EdgeInsets.only(left:20,right:20),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                         children: [
                           Container(
                             width: 190,
-                            child: Padding(padding: EdgeInsets.only(left:10,right:10),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
                               child: TextField(
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
@@ -254,7 +302,8 @@ class _PushRequestsState extends State<PushRequests> {
                               borderRadius: BorderRadius.circular(7),
                             ),
                           ),
-                          Transform.scale( scale: 0.8,
+                          Transform.scale(
+                              scale: 0.8,
                               child: LiteRollingSwitch(
                                 value: true,
                                 textOn: "Negotiable",
@@ -268,21 +317,24 @@ class _PushRequestsState extends State<PushRequests> {
                                   print('turned ${(state) ? 'yes' : 'no'}');
                                 },
                               )),
-                        ]
-                      )
-                    )
-                  ),
-                  SizedBox(height:20),
-                  Align(  //backend person should implement a date and time setter for this.
-                    alignment: Alignment.centerLeft, //you can create textViews under this to
-                    child: Container(  //to display the date and time
-                      margin: const EdgeInsets.only(left:22,top:10), //use an implementer that allows you
-                      child: Text("Set the deadline for this job", //to do both date and time together
+                        ]))),
+            SizedBox(height: 20),
+            Align(
+                //backend person should implement a date and time setter for this.
+                alignment: Alignment
+                    .centerLeft, //you can create textViews under this to
+                child: Container(
+                    //to display the date and time
+                    margin: const EdgeInsets.only(
+                        left: 22, top: 10), //use an implementer that allows you
+                    child: Text(
+                        "Set the deadline for this job", //to do both date and time together
                         style: TextStyle(
                           fontFamily: textFont,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: blueGrey2,
+
                         )
                       )
                     )
@@ -313,6 +365,6 @@ class _PushRequestsState extends State<PushRequests> {
           ))
 
     );
-  }
 
+  }
 }
