@@ -95,24 +95,72 @@ class _PushRequestsState extends State<PushRequests> {
                     color: blueGrey5,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                )),
-            SizedBox(height: 80),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  child: Container(
-                    width: 320,
-                    child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButton(
-                        underline: SizedBox(),
-                        isExpanded: true,
-                        value: _value31,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Name of Job"),
-                            value: 1,
+
+                  SizedBox(height: 60),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      child: Container(
+                        width:320,
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButton(
+                            underline: SizedBox(),
+                            isExpanded: true,
+                            value: _value31,
+                            items: [
+                              DropdownMenuItem(
+                                child: Text("Name of Job"),
+                                value: 1,
+                              ),
+                              DropdownMenuItem(
+                                child: Text("Job 1"),
+                                value: 2,
+                              ),
+                              DropdownMenuItem(
+                                child: Text("Job 2"),
+                                value: 3,
+                              ),
+                            ],
+                            onChanged: (int? value) {
+                              setState(() {
+                                _value31 = value!;
+                              });
+                            },
+                          ),),
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                    )),
+                  SizedBox(height:20),
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        margin: const EdgeInsets.only(left:20),
+                        height:110,
+                        width: 340,
+                        child: Padding(padding: EdgeInsets.only(left:10,right:10),
+                          child: TextField(
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: textFont,
+                              fontSize: textFieldSize,
+                            ),
+                            showCursor: true,
+                            cursorColor: Colors.black,
+                            decoration: InputDecoration(
+                              hintText: "Short Description of job",
+                              border: InputBorder.none,
+                            ),
+
                           ),
                           DropdownMenuItem(
                             child: Text("Job 1"),
@@ -171,14 +219,60 @@ class _PushRequestsState extends State<PushRequests> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(7),
                   ),
-                )),
-            SizedBox(height: 20),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                    margin: const EdgeInsets.only(left: 20, right: 20),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  SizedBox(height:20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(left:20,right:20),
+                      child: Row(
+                        children: [
+                          Text("Max number of handymen",
+                            style: TextStyle(
+                              fontSize:textFieldSize,
+                              fontFamily: textFont,
+                              color: Colors.black,
+                            )
+                          ),
+                          SizedBox(width:15),
+                          Container(
+                            width: 80,
+                            child: Padding(padding: EdgeInsets.only(left:10,right:10),
+                              child: TextField(
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: textFont,
+                                  fontSize: textFieldSize,
+                                ),
+                                showCursor: true,
+                                cursorColor: Colors.black,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                ),
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black45,
+                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                          ),
+                        ]
+                      )
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: const EdgeInsets.only(left:20,right:20),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                         children: [
                           Container(
                             width: 190,
@@ -240,20 +334,37 @@ class _PushRequestsState extends State<PushRequests> {
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: blueGrey2,
-                        )))),
-            SizedBox(height: 120),
-            Align(
-                alignment: Alignment.center,
-                child: Container(
-                    width: 250,
-                    child: FloatingActionButton.extended(
-                        backgroundColor: blueGrey3,
-                        foregroundColor: Colors.white,
-                        onPressed: () {
-                          // Respond to button press
-                        },
-                        label: Text("PUSH SERVICE REQUEST"))))
-          ])),
-        )));
+
+                        )
+                      )
+                    )
+                  ),
+                  SizedBox(height: 100),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width:250,
+                        child:FloatingActionButton.extended(
+                            backgroundColor: blueGrey3,
+                            foregroundColor: Colors.white,
+                            onPressed: () {
+                              // Respond to button press
+                            },
+                            label:Text("PUSH SERVICE REQUEST")
+                        )
+                    )
+                  )
+
+
+
+
+                ]
+              )
+            ),
+
+          ))
+
+    );
+
   }
 }
