@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:beta_hustle/models/colors.dart';
 import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/strings.dart';
@@ -96,7 +98,7 @@ class _PushRequestsState extends State<PushRequests> {
                     borderRadius: BorderRadius.circular(30),
                   ),
 
-                  SizedBox(height: 60),
+                   SizedBox(height: 60),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -187,32 +189,8 @@ class _PushRequestsState extends State<PushRequests> {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 )),
-            SizedBox(height: 20),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  height: 110,
-                  width: 340,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                    child: TextField(
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: textFont,
-                        fontSize: textFieldSize,
-                      ),
-                      showCursor: true,
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        hintText: "Short Description of job",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                  decoration: BoxDecoration(
+
+                  BoxDecoration(
                     border: Border.all(
                       color: Colors.black45,
                     ),
@@ -264,7 +242,7 @@ class _PushRequestsState extends State<PushRequests> {
                         ]
                       )
                     ),
-                  ),
+                  );,
                   SizedBox(height: 20),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -353,7 +331,7 @@ class _PushRequestsState extends State<PushRequests> {
                             label:Text("PUSH SERVICE REQUEST")
                         )
                     )
-                  )
+                  );
 
 
 
@@ -364,6 +342,7 @@ class _PushRequestsState extends State<PushRequests> {
 
           ))
 
+    // ignore: empty_statements
     );
 
   }
