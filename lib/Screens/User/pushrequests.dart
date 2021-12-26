@@ -3,6 +3,7 @@ import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 
 class PushRequests extends StatefulWidget {
   @override
@@ -287,6 +288,33 @@ class _PushRequestsState extends State<PushRequests> {
                       )
                     )
                   ),
+                  //SizedBox(height:10),
+                Container(
+                  margin: const EdgeInsets.only(left:20,right:20),
+                  child:DateTimePicker(
+                    type: DateTimePickerType.dateTimeSeparate,
+                    dateMask: 'd MMM, yyyy',
+                    initialValue: DateTime.now().toString(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    icon: Icon(Icons.event),
+                    dateLabelText: 'Date',
+                    timeLabelText: "Time",
+                    selectableDayPredicate: (date) {
+                      // Disable weekend days to select from the calendar
+                      // if (date.weekday == 6 || date.weekday == 7) {
+                      //   return false;
+                      // }
+                      return true;
+                    },
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+                ),
                   SizedBox(height: 100),
                   Align(
                     alignment: Alignment.center,
@@ -301,8 +329,9 @@ class _PushRequestsState extends State<PushRequests> {
                             label:Text("PUSH SERVICE REQUEST")
                         )
                     )
-                  )
-
+                  ),
+                  SizedBox(height:50),
+                  SizedBox(height:50),
 
 
 
