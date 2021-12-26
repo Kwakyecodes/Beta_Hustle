@@ -3,17 +3,16 @@
 //hide RoundedRectangleBorder;
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
 
-import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:beta_hustle/models/db_ref.dart';
 
 import 'package:beta_hustle/models/job_descriptions.dart';
 
-import 'package:beta_hustle/Screens/Both/requestui.dart';
 import 'package:beta_hustle/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:provider/src/provider.dart';
 
 import 'main_page_content.dart';
@@ -87,7 +86,7 @@ class _MainPageState extends State<MainPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      userinfo[1],
+                                      "Welcome, " + userinfo[1],
                                       style: TextStyle(
                                         fontSize: 16.0,
                                       ),
@@ -108,7 +107,7 @@ class _MainPageState extends State<MainPage> {
                             ),
                           );
                         }
-                        return Text(firebaseUser.uid);
+                        return Text("User...");
                       })),
               Divider(),
               SizedBox(
@@ -274,14 +273,14 @@ class _MainPageState extends State<MainPage> {
                         case '/homepage':
                           page = HomePage();
                           break;
-                        case '/favoritespage':
+                        case '/favorites':
                           page = HomePage();
                           break;
                         case '/pushrequests':
                           page = PushRequests();
                           break;
                         // case '/requestpage':
-                        //   page = Requests();
+                        //   //page = Requests();
                         //   break;
                         default:
                           page = HomePage();
@@ -406,7 +405,7 @@ class _MainPageState extends State<MainPage> {
                               }
                             });
                             Job.mainListNav.currentState
-                                ?.pushReplacementNamed('/settingspage');
+                                ?.pushReplacementNamed('/pushrequests');
                           },
                         ),
                       ),

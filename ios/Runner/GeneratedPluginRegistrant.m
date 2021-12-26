@@ -36,6 +36,18 @@
 @import fluttertoast;
 #endif
 
+#if __has_include(<geolocator_apple/GeolocatorPlugin.h>)
+#import <geolocator_apple/GeolocatorPlugin.h>
+#else
+@import geolocator_apple;
+#endif
+
+#if __has_include(<google_maps_flutter/FLTGoogleMapsPlugin.h>)
+#import <google_maps_flutter/FLTGoogleMapsPlugin.h>
+#else
+@import google_maps_flutter;
+#endif
+
 #if __has_include(<telephony/TelephonyPlugin.h>)
 #import <telephony/TelephonyPlugin.h>
 #else
@@ -50,6 +62,8 @@
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
+  [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
+  [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
   [TelephonyPlugin registerWithRegistrar:[registry registrarForPlugin:@"TelephonyPlugin"]];
 }
 

@@ -1,8 +1,9 @@
-// ignore_for_file: dead_code
-
 import 'package:beta_hustle/models/colors.dart';
 import 'package:beta_hustle/models/constants.dart';
+import 'package:beta_hustle/models/form_validation.dart';
 import 'package:beta_hustle/models/strings.dart';
+import 'package:beta_hustle/models/text_editing_control.dart';
+import 'package:beta_hustle/services/places.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
@@ -23,9 +24,9 @@ class _PushRequestsState extends State<PushRequests> {
   // }
 
   Widget build(BuildContext context) {
-    //looks like the keyboard is covering the text field again
+    //looks like the keyboard is covering the text field again and there is
     return Scaffold(
-        //can someone(Eben) please do your trick to fix it? thanks :)
+        //some bottom overflow problem. can someone(Eben) please do your trick to fix it? thanks :)
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {},
@@ -61,31 +62,16 @@ class _PushRequestsState extends State<PushRequests> {
                     ),
                     Container(
                       width: 120,
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton(
-                          underline: SizedBox(),
-                          isExpanded: true,
-                          value: _value30,
-                          items: [
-                            DropdownMenuItem(
-                              child: Text("Location 1"),
-                              value: 1,
-                            ),
-                            DropdownMenuItem(
-                              child: Text("Location 2"),
-                              value: 2,
-                            ),
-                            DropdownMenuItem(
-                              child: Text("Location 3"),
-                              value: 3,
-                            ),
-                          ],
-                          onChanged: (int? value) {
-                            setState(() {
-                              _value30 = value!;
-                            });
-                          },
+                      child: TextFormField(
+                        onChanged: (val) {
+                          final Places places;
+                          places = Places();
+                          places.findPlace(destination.text);
+                        },
+                        keyboardType: TextInputType.text,
+                        controller: destination,
+                        decoration: InputDecoration(
+                          hintText: "Where is the work Destination?",
                         ),
                       ),
                     )
@@ -97,87 +83,20 @@ class _PushRequestsState extends State<PushRequests> {
                     color: blueGrey5,
                     borderRadius: BorderRadius.circular(30),
                   ),
-
-                   SizedBox(height: 60),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 20),
-                      child: Container(
-                        width:320,
-                        child: ButtonTheme(
-                          alignedDropdown: true,
-                          child: DropdownButton(
-                            underline: SizedBox(),
-                            isExpanded: true,
-                            value: _value31,
-                            items: [
-                              DropdownMenuItem(
-                                child: Text("Name of Job"),
-                                value: 1,
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Job 1"),
-                                value: 2,
-                              ),
-                              DropdownMenuItem(
-                                child: Text("Job 2"),
-                                value: 3,
-                              ),
-                            ],
-                            onChanged: (int? value) {
-                              setState(() {
-                                _value31 = value!;
-                              });
-                            },
-                          ),),
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(7),
-                      ),
-                    )),
-                  SizedBox(height:20),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        margin: const EdgeInsets.only(left:20),
-                        height:110,
-                        width: 340,
-                        child: Padding(padding: EdgeInsets.only(left:10,right:10),
-                          child: TextField(
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: textFont,
-                              fontSize: textFieldSize,
-                            ),
-                            showCursor: true,
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              hintText: "Short Description of job",
-                              border: InputBorder.none,
-                            ),
-
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Job 1"),
-                            value: 2,
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Job 2"),
-                            value: 3,
-                          ),
-                        ],
-                        onChanged: (int? value) {
-                          setState(() {
-                            _value31 = value!;
-                          });
-                        },
+                )),
+            SizedBox(height: 60),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  child: Container(
+                    width: 320,
+                    child: TextFormField(
+                      onChanged: (val) {},
+                      keyboardType: TextInputType.text,
+                      controller: title,
+                      decoration: InputDecoration(
+                        hintText: "Title of Job?",
                       ),
                     ),
                   ),
@@ -189,75 +108,96 @@ class _PushRequestsState extends State<PushRequests> {
                     borderRadius: BorderRadius.circular(7),
                   ),
                 )),
-
-                  BoxDecoration(
+            SizedBox(height: 20),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  height: 110,
+                  width: 340,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: TextField(
+                      controller: description,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: textFont,
+                        fontSize: textFieldSize,
+                      ),
+                      showCursor: true,
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        hintText: "Short Description of job",
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.black45,
                     ),
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(7),
                   ),
-
-                  SizedBox(height:20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(left:20,right:20),
-                      child: Row(
-                        children: [
-                          Text("Max number of handymen",
-                            style: TextStyle(
-                              fontSize:textFieldSize,
-                              fontFamily: textFont,
-                              color: Colors.black,
-                            )
+                )),
+            SizedBox(height: 20),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Row(children: [
+                    Text("Max number of handymen",
+                        style: TextStyle(
+                          fontSize: textFieldSize,
+                          fontFamily: textFont,
+                          color: Colors.black,
+                        )),
+                    SizedBox(width: 15),
+                    Container(
+                      width: 80,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          maxLines: null,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: textFont,
+                            fontSize: textFieldSize,
                           ),
-                          SizedBox(width:15),
-                          Container(
-                            width: 80,
-                            child: Padding(padding: EdgeInsets.only(left:10,right:10),
-                              child: TextField(
-                                keyboardType: TextInputType.multiline,
-                                maxLines: null,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: textFont,
-                                  fontSize: textFieldSize,
-                                ),
-                                showCursor: true,
-                                cursorColor: Colors.black,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.black45,
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(7),
-                            ),
+                          showCursor: true,
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
                           ),
-                        ]
-                      )
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black45,
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(7),
+                      ),
                     ),
-                  );,
-                  SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(left:20,right:20),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                  ])),
+            ),
+            SizedBox(height: 20),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                    margin: const EdgeInsets.only(left: 20, right: 20),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             width: 190,
                             child: Padding(
                               padding: EdgeInsets.only(left: 10, right: 10),
                               child: TextField(
-                                keyboardType: TextInputType.multiline,
+                                keyboardType: TextInputType.number,
                                 maxLines: null,
                                 style: TextStyle(
                                   color: Colors.black,
@@ -312,38 +252,30 @@ class _PushRequestsState extends State<PushRequests> {
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: blueGrey2,
+                        )))),
+            SizedBox(height: 100),
+            Align(
+                alignment: Alignment.center,
+                child: Container(
+                    width: 250,
+                    child: FloatingActionButton.extended(
+                        backgroundColor: blueGrey3,
+                        foregroundColor: Colors.black,
+                        onPressed: () {
+                          // Respond to button press
 
-                        )
-                      )
-                    )
-                  ),
-                  SizedBox(height: 100),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width:250,
-                        child:FloatingActionButton.extended(
-                            backgroundColor: blueGrey3,
-                            foregroundColor: Colors.white,
-                            onPressed: () {
-                              // Respond to button press
-                            },
-                            label:Text("PUSH SERVICE REQUEST")
-                        )
-                    )
-                  );
-
-
-
-
-                ]
-              )
-            ),
-
-          ))
-
-    // ignore: empty_statements
-    );
-
+                          final formValidate validate = formValidate(
+                              jobtitle: title.text,
+                              jobDescription: description.text,
+                              maxNumofmen: int.tryParse(maxNumofmen.text),
+                              price: double.tryParse(price.text));
+                          bool valid = validate.pushRequestform();
+                          if (valid = true) {
+                            print("Good form!!");
+                          }
+                        },
+                        label: Text("PUSH SERVICE REQUEST"))))
+          ])),
+        )));
   }
 }

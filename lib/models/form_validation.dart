@@ -1,11 +1,25 @@
+import 'package:beta_hustle/models/text_editing_control.dart';
 import 'package:flutter/material.dart';
 
-import 'package:beta_hustle/notifications/alerts.dart';
 import 'package:beta_hustle/Screens/Both/signup.dart';
 import 'package:beta_hustle/models/user.dart';
+import 'package:beta_hustle/notifications/alerts.dart';
 
 class formValidate {
   //String email, phone, password;
+
+  //Push Request form attributes
+  String? jobtitle;
+  String? jobDescription;
+  int? maxNumofmen;
+  double? price;
+
+  formValidate({
+    this.jobtitle,
+    this.jobDescription,
+    this.maxNumofmen,
+    this.price,
+  });
 
   final alerts = new Alerts();
   final user = new NUser();
@@ -34,6 +48,21 @@ class formValidate {
       alerts.user_toast("The Passwords don't Match");
     } else {
       //user.signUp(fname, sname, email, phone, password, context, gender);
+      valid = true;
+    }
+    return valid;
+  }
+
+  bool pushRequestform() {
+    bool valid = false;
+    if (jobtitle!.length == 0 ||
+        jobDescription!.length == 0 ||
+        maxNumofmen == 0 ||
+        jobDescription!.isEmpty) {
+      alerts.user_toast("All fields are required!!");
+    }
+    //add more conditions for fieldvalues(Eg:Valid job titles)
+    else {
       valid = true;
     }
     return valid;

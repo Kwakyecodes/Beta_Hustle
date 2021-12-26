@@ -24,14 +24,14 @@ class NUser {
     }))
         .user;
     if (_FirebaseUser != null) {
-//User is created
-//Save User data into database
+      //User is created
+      //Save User data into database
 
       //Navigator.of(context).pushNamed('/jobRequest');
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/jobRequest', (Route<dynamic> route) => false);
     } else {
-//An error occured
+      //An error occured
       alerts.user_toast("Invalid Credentials");
     }
   }

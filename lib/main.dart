@@ -1,8 +1,8 @@
 //import 'package:beta_hustle/Screens/Both/login.dart';
 
-import 'package:beta_hustle/Screens/Both/handyman_profile.dart';
-
 // @dart=2.9
+
+import 'package:beta_hustle/Screens/Both/handyman_profile.dart';
 
 import 'package:beta_hustle/Screens/Both/login_page.dart';
 
@@ -18,6 +18,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 import 'package:provider/provider.dart';
 import 'Screens/Both/signup.dart';
 import 'authentication.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
         routes: <String, WidgetBuilder>{
           //'/signup': (BuildContext context) => new SignUpPage(),
           //'/requests': (BuildContext context) => new Requests(),
-          '/pushrequests': (BuildContext context) => new PushRequests(),
+          //'/pushrequests': (BuildContext context) => new PushRequests(),
           '/chats': (BuildContext context) => new HomeScreen(),
           '/userprofile': (BuildContext context) => new UserProfile()
         },
@@ -65,7 +66,7 @@ class Authenticate extends StatelessWidget {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return MainPage();
+      return PushRequests();
     } else {
       return LoginPage();
     }
