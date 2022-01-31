@@ -5,9 +5,10 @@ import 'package:beta_hustle/Screens/Both/requestui.dart';
 import 'package:beta_hustle/models/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-
-
+DateTime selectedDate=DateTime.now();
+ScrollController _scrollBottomBarController = new ScrollController();
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -16,10 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   double percent =0.0;
   String _selectedItem="";
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   final List<Job> jobList = Job.getJob();
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -314,32 +317,344 @@ Widget JobImage(String imageUrl){
 }
 void JobsListViewDetails (context,Job job){
 
+ Color color = Colors.green;
+ if (job.negotiability=="Negotiable"){
+   color = Colors.green;
+ }
+ else{
+   color = Colors.black38;
+ }
 
  showModalBottomSheet(context: context, builder:(BuildContext ab) {
 
    return StatefulBuilder(
        builder: (BuildContext context, StateSetter setState) {
-         return Container(
-           height: MediaQuery.of(context).size.height*0.75,
-           child:SingleChildScrollView(
-             child: Column(
-               children: [
-                 Align(
-                   alignment : Alignment.centerLeft,
-                   child:IconButton(
-                     icon: Icon(Icons.clear_outlined, color: Colors.black,
-                         size: cancelIconSize),
-                     onPressed: () {
-                       Navigator.of(context).pop();
-                     },
-                   ),
-                 ),
-               ],
-             ),
-           ),
+         return Scaffold(
+           resizeToAvoidBottomInset: true,
+           body: Container(
+            // height: MediaQuery.of(context).size.height*0.80,
+             child:SingleChildScrollView(
+               controller: ScrollController(),
+               child:  Column(
+                 children: [
 
+                   Container(
+
+                     decoration: BoxDecoration(
+                       color: blueGrey4,
+                       borderRadius: BorderRadius.only(topLeft: Radius.circular(bottonSheetRadius), topRight: Radius.circular(bottonSheetRadius)),
+                     ),
+                     child: Stack(
+
+
+                       children: [
+
+                         IconButton(
+                           icon: Icon(Icons.clear_outlined, color: Colors.black,
+                               size: cancelIconSize),
+                           onPressed: () {
+                             Navigator.of(context).pop();
+                           },
+                         ),
+
+
+
+                         Center(
+                           child: Padding(
+                             padding: const EdgeInsets.only(top: 5.0),
+                             child: Container (
+                               alignment: Alignment.center,
+                               height: 5,
+                               width: 50,
+                               decoration: BoxDecoration(
+                                   color: Colors.black12,
+                                   borderRadius: BorderRadius.circular(50)
+                               ),
+                             ),
+                           ),
+                         ),
+
+                         Positioned(
+                           top: 20,
+                           left: 70,
+                           child: Text(
+                             "JOB REQUEST DETAILS",style: TextStyle(
+                               fontFamily: textFont,
+                               fontSize: 16,
+                               fontWeight: FontWeight.bold
+                           ),
+                           ),
+                         ),
+
+
+
+
+
+                       ],),
+                   ),
+                   SizedBox(height: 10,),
+                   Column(
+                     children: [
+                       Container(
+
+                         child:Text("${job.requestTitle}",style: TextStyle(
+
+                             fontFamily: textFont,
+                             fontWeight: FontWeight.w600
+                         ),
+                         ),
+
+                       ),
+                       Container(
+                         child: Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: Text("${job.jobDescription}",style: TextStyle(
+                               fontFamily: textFont
+                           ),),
+                         ),
+                       ),
+                       HorizontalLine(),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children:[
+
+                               Column(
+                                 children: [
+                                   Row(
+                                     children: [
+                                       Text("PROJECT BUDGET",style: TextStyle(
+                                           fontFamily: textFont,
+                                           fontWeight: FontWeight.w600
+                                       ),)
+                                     ],
+
+                                   ),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left: 4.0),
+                                     child: Row(
+                                       children: [
+                                         Container(
+                                           child: Text("GH₵ ${job.price}",style: TextStyle(
+                                             fontFamily: textFont,
+                                             // fontWeight: FontWeight.bold
+                                           ),),
+
+                                         ),
+                                         SizedBox(width: 8,),
+                                         Container(
+                                           //  height: 20,
+                                           // width: 60,
+                                           decoration: BoxDecoration(
+                                             color: color,
+                                             borderRadius: BorderRadius.circular(50),
+
+                                           ),
+                                           child: Padding(
+                                             padding: const EdgeInsets.all(3),
+                                             child: Text("${job.negotiability}",style:TextStyle(
+                                                 fontFamily: textFont
+                                             )),
+                                           ),
+
+
+
+                                         ),
+
+                                       ],
+
+
+                                     ),
+                                   )
+                                 ],
+                               ),
+                               Column(
+                                 children: [
+                                   Padding(
+                                     padding: const EdgeInsets.only(right: 5.0),
+                                     child: Container(
+                                       alignment: Alignment(1,0),
+                                       child: Text("DEADLINE",style: TextStyle(
+                                           fontFamily: textFont,
+                                           fontWeight: FontWeight.bold
+                                       )),
+                                     ),
+
+                                   ),
+                                   Container(
+                                     alignment: Alignment(1,0),
+                                     child: Text("${job.endDate}",style: TextStyle(
+                                         fontFamily: textFont,
+                                         fontWeight: FontWeight.w300
+
+                                     ),),
+                                   )
+
+                                 ],
+
+                               )
+                             ]
+
+                         ),
+
+
+                       ),
+
+                       SizedBox(height: 20),
+                       Padding(
+                         padding: const EdgeInsets.only(left: 17.0),
+                         child: Row(
+                           children: [
+                             Column(
+                               children:[
+                                 Text("REQUIRED SKILLS",style: TextStyle(
+                                     fontFamily: textFont,
+                                     fontWeight: FontWeight.w600
+
+                                 ),),
+                                 Text("${job.requiredSkills}",style: TextStyle(
+                                     fontFamily: textFont
+                                 ),),
+
+                               ],
+                             )
+                           ],
+
+                         ),
+                       ),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: HorizontalLine(),
+                       ),
+                       Row(
+                         children: [
+                           Padding(
+                             padding: const EdgeInsets.only(left: 17.0),
+                             child: Text("How soon can you complete this task?", style: TextStyle(
+                                 fontFamily: textFont,
+                                 fontWeight: FontWeight.w600
+                             ),),
+                           ),
+
+
+                         ],
+                       ),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                         children: [
+                           ElevatedButton(
+                             style: ElevatedButton.styleFrom(
+                                 primary: blueGrey3,
+
+
+                             ),
+                             onPressed: () {
+
+                               showDatePicker(
+                                 context: context,
+                                 initialDate: DateTime.now(),
+                                 firstDate: DateTime(2010),
+                                 lastDate: DateTime(2025),
+
+                               ).then((date) {
+                                 setState((){
+                                   selectedDate=date!;
+
+                                 });
+
+                               });
+
+                             },
+                             child: Text("Choose Date"),
+                           ),
+
+                           Text(selectedDate==null?"No date has been selected":DateFormat("dd MMMM yyyy").format(selectedDate),style: TextStyle(
+                             fontFamily: textFont,
+                           ),),
+
+                         ],
+                       ),
+                       SizedBox(height: 10,),
+                       Row(
+                         children: [
+
+                           Padding(
+                             padding: const EdgeInsets.only(left :17.0, bottom: 10),
+                             child: Text("Message (optional)",style: TextStyle(
+                               fontFamily: textFont,
+                               fontWeight: FontWeight.w600,
+                             ),),
+                           ),
+
+
+                         ],
+                       ),
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.start,
+                         children: [
+                           SizedBox(width: 40,),
+                           Center(
+                             child: Container(
+                               height:100,
+                               width: 240,
+                               child: TextField(
+                                 style: TextStyle(
+                                   color: Colors.black,
+                                   fontFamily: textFont,
+                                   fontSize: textFieldSize,
+                                 ),
+
+                                 showCursor: true,
+                                 cursorColor: Colors.black,
+                                 decoration: InputDecoration(
+                                   hintText: " Send a message to the employer to \n highlight your qualifications. ",
+                                   hintMaxLines: 2,
+                                   hintStyle: TextStyle(
+                                     fontFamily: textFont,
+                                     fontSize: 14
+                                   ),
+                                   border: InputBorder.none,
+                                 ),
+
+                               ),
+                               decoration: BoxDecoration(
+                                 border: Border.all(
+                                   color: Colors.black45,
+                                 ),
+                                 color: Colors.white,
+                                 borderRadius: BorderRadius.circular(5),
+                               ),
+                             ),
+                           )
+                         ],
+                       ),
+                       SizedBox(height: 10,),
+                       ElevatedButton(
+                         child: Text("                  PLACE A BID                  ",style: TextStyle(
+                           color: Colors.white
+                         ),),
+                         style: ElevatedButton.styleFrom(
+                           primary: blueGrey3,
+                         ),
+                         onPressed: (){
+
+                         }
+                         ,
+                       ),
+                       SizedBox(height: 80,)
+                     ],
+                   )
+
+                 ],
+               ),
+             ),
+
+           ),
          );
+
        });
+
 
  },
      shape: RoundedRectangleBorder(
