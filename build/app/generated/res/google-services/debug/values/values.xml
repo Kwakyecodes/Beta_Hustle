@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">487441194604-r193ociqbcq9uoubaa0nr7o7mj06snnn.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://beta-hustle-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">487441194604</string>
+    <string name="google_api_key" translatable="false">AIzaSyBTBSwtTfmmp9zvqWx7amCifxz67QiZB88</string>
+    <string name="google_app_id" translatable="false">1:487441194604:android:8392000a27e0fb450bc249</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBTBSwtTfmmp9zvqWx7amCifxz67QiZB88</string>
+    <string name="google_storage_bucket" translatable="false">beta-hustle.appspot.com</string>
+    <string name="project_id" translatable="false">beta-hustle</string>
+</resources>

@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/domitechnologies/beta_hustle/BuildConfig.java
+ com.domitechnologies.beta_hustle.BuildConfig
