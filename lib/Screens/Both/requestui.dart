@@ -147,7 +147,7 @@ class JobsDetailsCast extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          JobField(field: "Cast", value: job!.actors),
+          JobField(field: "Cast", value: job!.requiredSkills),
           JobField(field: "Directors", value: job!.requestTitle),
           JobField(field: "Awards",value: job!.awards)
         ],
