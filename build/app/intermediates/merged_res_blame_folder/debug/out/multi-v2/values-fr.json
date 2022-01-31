@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\hp\\Desktop\\beta_hustle\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr\\values-fr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\cd8b731c45c6a3c7ef11cd5ccf2bd047\\transformed\\core-1.1.0\\res\\values-fr\\values-fr.xml",
+                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\a2797b0fb20234f1523b596fac270d92\\transformed\\core-1.3.2\\res\\values-fr\\values-fr.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,7 +1,9 @@
 //import 'package:beta_hustle/Screens/Both/requests.dart'
 //hide Colors
 //hide RoundedRectangleBorder;
+import 'package:beta_hustle/Screens/Both/requests.dart';
 import 'package:beta_hustle/Screens/User/pushrequests.dart';
+import 'package:beta_hustle/Screens/User/user_profile.dart';
 
 import 'package:beta_hustle/models/db_ref.dart';
 
@@ -96,8 +98,11 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     TextButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/userprofile');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UserProfile()));
                                       },
                                       child: Text("Edit Profile"),
                                     ),
@@ -279,9 +284,9 @@ class _MainPageState extends State<MainPage> {
                         case '/pushrequests':
                           page = PushRequests();
                           break;
-                        // case '/requestpage':
-                        //   //page = Requests();
-                        //   break;
+                        case '/requestpage':
+                          page = Requests();
+                          break;
                         default:
                           page = HomePage();
                           break;

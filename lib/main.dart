@@ -66,7 +66,7 @@ class Authenticate extends StatelessWidget {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return PushRequests();
+      return MainPage();
     } else {
       return LoginPage();
     }

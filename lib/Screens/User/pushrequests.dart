@@ -1,11 +1,16 @@
 import 'package:beta_hustle/models/colors.dart';
 import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/form_validation.dart';
+import 'package:beta_hustle/models/job.dart';
 import 'package:beta_hustle/models/strings.dart';
 import 'package:beta_hustle/models/text_editing_control.dart';
+import 'package:beta_hustle/notifications/alerts.dart';
+import 'package:beta_hustle/services/location.dart';
 import 'package:beta_hustle/services/places.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:provider/provider.dart';
 
 class PushRequests extends StatefulWidget {
   @override
@@ -15,7 +20,8 @@ class PushRequests extends StatefulWidget {
 class _PushRequestsState extends State<PushRequests> {
   int _value30 = 1;
   int _value31 = 1;
-
+  String moneytype = "";
+  final Alerts alerts = Alerts();
   // CustomPicker({DateTime currentTime, LocaleType locale}): super(locale: locale){
   //   this.currentTime = currentTime ?? DateTime.now();
   //   this.setLeftIndex(this.currentTime.hour);
@@ -53,29 +59,50 @@ class _PushRequestsState extends State<PushRequests> {
                 child: Container(
                   width: 170,
                   margin: const EdgeInsets.only(left: 10, top: 20),
-                  child: Row(children: [
-                    SizedBox(width: 8),
-                    Icon(
-                      Icons.location_on,
-                      color: blueGrey1,
-                      size: cancelIconSize,
-                    ),
-                    Container(
-                      width: 120,
-                      child: TextFormField(
-                        onChanged: (val) {
-                          final Places places;
-                          places = Places();
-                          places.findPlace(destination.text);
-                        },
-                        keyboardType: TextInputType.text,
-                        controller: destination,
-                        decoration: InputDecoration(
-                          hintText: "Where is the work Destination?",
+                  child: SingleChildScrollView(
+                    child: Row(children: [
+                      SizedBox(width: 8),
+                      Icon(
+                        Icons.location_on,
+                        color: blueGrey1,
+                        size: cancelIconSize,
+                      ),
+                      Container(
+                        width: 120,
+                        child: TextFormField(
+                          onChanged: (val) {
+                            // final Places places;
+                            // places = Places();
+                            // places.findPlace(destination.text);
+
+                            final Locate locate;
+                            locate = Locate();
+                            locate.fetchLocation();
+                          },
+                          keyboardType: TextInputType.text,
+                          controller: destination,
+                          decoration: InputDecoration(
+                            hintText: "Endpoint",
+                          ),
                         ),
                       ),
-                    )
-                  ]),
+                      Icon(
+                        Icons.location_on,
+                        color: blueGrey1,
+                        size: cancelIconSize,
+                      ),
+                      Container(
+                        width: 120,
+                        child: TextFormField(
+                          onChanged: (val) {},
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            hintText: "StartUp point?",
+                          ),
+                        ),
+                      ),
+                    ]),
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: blueGrey5,
@@ -160,6 +187,7 @@ class _PushRequestsState extends State<PushRequests> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         child: TextField(
+                          controller: maxNumofmen,
                           keyboardType: TextInputType.number,
                           maxLines: null,
                           style: TextStyle(
@@ -197,6 +225,7 @@ class _PushRequestsState extends State<PushRequests> {
                             child: Padding(
                               padding: EdgeInsets.only(left: 10, right: 10),
                               child: TextField(
+                                controller: price,
                                 keyboardType: TextInputType.number,
                                 maxLines: null,
                                 style: TextStyle(
@@ -233,26 +262,64 @@ class _PushRequestsState extends State<PushRequests> {
                                 animationDuration: Duration(milliseconds: 600),
                                 onChanged: (bool state) {
                                   print('turned ${(state) ? 'yes' : 'no'}');
+                                  moneytype = state ? "negotiate" : "fixed";
                                 },
                               )),
                         ]))),
             SizedBox(height: 20),
             Align(
-                //backend person should implement a date and time setter for this.
-                alignment: Alignment
-                    .centerLeft, //you can create textViews under this to
-                child: Container(
-                    //to display the date and time
-                    margin: const EdgeInsets.only(
-                        left: 22, top: 10), //use an implementer that allows you
-                    child: Text(
-                        "Set the deadline for this job", //to do both date and time together
-                        style: TextStyle(
-                          fontFamily: textFont,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: blueGrey2,
-                        )))),
+              child: TextFormField(
+                controller: Datetext,
+                decoration: InputDecoration(
+                  hintText: "Select Date",
+                  border: OutlineInputBorder(),
+                  hintStyle:
+                      TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                ),
+                readOnly: true,
+                onTap: () async {
+                  final date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2022),
+                      lastDate: DateTime(2032));
+                  setState(() {
+                    if (date == null) {
+                      alerts.user_toast("Please select a date");
+                    } else {
+                      Datetext.text = "${date.day}-${date.month}-${date.year}";
+                    }
+                  });
+                },
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(height: 20),
+            Align(
+              child: TextFormField(
+                controller: TimeText,
+                decoration: InputDecoration(
+                  hintText: "Select Time",
+                  border: OutlineInputBorder(),
+                  hintStyle:
+                      TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                ),
+                readOnly: true,
+                onTap: () async {
+                  final time = await showTimePicker(
+                      context: context, initialTime: TimeOfDay.now());
+
+                  setState(() {
+                    if (time == null) {
+                      alerts.user_toast("Please select a time");
+                    } else {
+                      TimeText.text = time.format(context);
+                    }
+                  });
+                },
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              ),
+            ),
             SizedBox(height: 100),
             Align(
                 alignment: Alignment.center,
@@ -261,7 +328,7 @@ class _PushRequestsState extends State<PushRequests> {
                     child: FloatingActionButton.extended(
                         backgroundColor: blueGrey3,
                         foregroundColor: Colors.black,
-                        onPressed: () {
+                        onPressed: () async {
                           // Respond to button press
 
                           final formValidate validate = formValidate(
@@ -270,8 +337,17 @@ class _PushRequestsState extends State<PushRequests> {
                               maxNumofmen: int.tryParse(maxNumofmen.text),
                               price: double.tryParse(price.text));
                           bool valid = validate.pushRequestform();
+
                           if (valid = true) {
-                            print("Good form!!");
+                            final Job job = Job(
+                                title: title.text,
+                                description: description.text,
+                                maxNumofmen: maxNumofmen.text,
+                                price: price.text,
+                                priceType: moneytype,
+                                enddate: Datetext.text,
+                                endtime: TimeText.text);
+                            job.addJob(context);
                           }
                         },
                         label: Text("PUSH SERVICE REQUEST"))))

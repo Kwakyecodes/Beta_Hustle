@@ -13,6 +13,11 @@ String verifyID = "...";
 final Telephony telephony = Telephony.instance;
 
 class NUser {
+  String? fname;
+  String? sname;
+  String? email;
+  String? password;
+
   final alerts = new Alerts();
   String username = "";
   login(String email, String password, BuildContext context) async {
@@ -127,4 +132,6 @@ class NUser {
       username = data.value.toString();
     });
   }
+
+  updateUserinfo() async {}
 }

@@ -1,4 +1,3 @@
-
 const appNameSize = 50.0;
 const textFieldHeight = 50.0;
 const textFieldWidth = 340.0;
@@ -15,4 +14,4 @@ const listBottomStringsSize = 14.0;
 const listPriceSize = 20.0;
 const RadioTitleSize = 17.0;
 const jobDetailsTitleSize = 18.0;
-const requestsContainerSize = 60.0;
+const requestsContainerSize = 100.0;

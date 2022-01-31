@@ -36,6 +36,12 @@
 @import fluttertoast;
 #endif
 
+#if __has_include(<geocoder/GeocoderPlugin.h>)
+#import <geocoder/GeocoderPlugin.h>
+#else
+@import geocoder;
+#endif
+
 #if __has_include(<geolocator_apple/GeolocatorPlugin.h>)
 #import <geolocator_apple/GeolocatorPlugin.h>
 #else
@@ -46,6 +52,12 @@
 #import <google_maps_flutter/FLTGoogleMapsPlugin.h>
 #else
 @import google_maps_flutter;
+#endif
+
+#if __has_include(<location/LocationPlugin.h>)
+#import <location/LocationPlugin.h>
+#else
+@import location;
 #endif
 
 #if __has_include(<telephony/TelephonyPlugin.h>)
@@ -62,8 +74,10 @@
   [FLTFirebaseCorePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseCorePlugin"]];
   [FLTFirebaseDatabasePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseDatabasePlugin"]];
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
+  [GeocoderPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeocoderPlugin"]];
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
   [FLTGoogleMapsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTGoogleMapsPlugin"]];
+  [LocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"LocationPlugin"]];
   [TelephonyPlugin registerWithRegistrar:[registry registrarForPlugin:@"TelephonyPlugin"]];
 }
 

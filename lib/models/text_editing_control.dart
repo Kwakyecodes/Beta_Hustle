@@ -16,3 +16,5 @@ final title = TextEditingController();
 final description = TextEditingController();
 final price = TextEditingController();
 final maxNumofmen = TextEditingController();
+final Datetext = TextEditingController();
+final TimeText = TextEditingController();
