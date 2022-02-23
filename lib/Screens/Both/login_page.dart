@@ -74,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                             iconOff: Icons.attach_money,
                             onChanged: (bool state) {
                               loginState = state;
+
                               print("$loginState");
                             },
                           )
@@ -226,8 +227,8 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () {
                           //Navigator.of(context).pushReplacementNamed('/jobRequest');
 
-                          validate.login(
-                              context, loginEmail.text, loginPassword.text);
+                          validate.login(context, loginEmail.text,
+                              loginPassword.text, loginState);
                         },
                         style: ElevatedButton.styleFrom(
                             primary: Colors.blueGrey.shade900,

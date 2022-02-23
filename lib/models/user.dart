@@ -1,15 +1,19 @@
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
-import 'package:beta_hustle/main.dart';
-import 'package:beta_hustle/Screens/Both/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:beta_hustle/notifications/alerts.dart';
-import 'package:beta_hustle/models/db_ref.dart';
-import 'package:telephony/telephony.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:telephony/telephony.dart';
+
+import 'package:beta_hustle/Screens/Both/login_page.dart';
+import 'package:beta_hustle/main.dart';
+import 'package:beta_hustle/models/db_ref.dart';
+import 'package:beta_hustle/notifications/alerts.dart';
 
 String verifyID = "...";
+bool userState = true;
 final Telephony telephony = Telephony.instance;
 
 class NUser {
@@ -19,8 +23,11 @@ class NUser {
   String? password;
 
   final alerts = new Alerts();
+  final box = GetStorage();
   String username = "";
-  login(String email, String password, BuildContext context) async {
+  login(String email, String password, BuildContext context,
+      bool userStatus) async {
+    //SharedPreferences prefs = await SharedPreferences.getInstance();
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final User? _FirebaseUser = (await _auth
             .signInWithEmailAndPassword(email: email, password: password)
@@ -29,12 +36,42 @@ class NUser {
     }))
         .user;
     if (_FirebaseUser != null) {
-      //User is created
-      //Save User data into database
+      //User exists
+      //Credentials are valid
+      DataSnapshot snapshot = await usersRef
+          .orderByChild('${_FirebaseUser.uid}/user')
+          .equalTo(false)
+          .get();
 
-      //Navigator.of(context).pushNamed('/jobRequest');
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          '/jobRequest', (Route<dynamic> route) => false);
+      print("Value::");
+      print(snapshot.exists);
+      print("state");
+      print(userStatus.toString());
+      if (snapshot.exists == true && userStatus == false) {
+        await box.write('userstate', false);
+
+        // Navigator.of(context).pushNamedAndRemoveUntil(
+        //     '/handymainpage', (Route<dynamic> route) => false);
+      } else {
+        await box.write('userstate', true);
+
+        // Navigator.of(context).pushNamedAndRemoveUntil(
+        //     '/jobRequest', (Route<dynamic> route) => false);
+      }
+
+      //   print("Value::");
+      //   print(snapshot.exists);
+      //   if (snapshot.exists == true && userStatus == false) {
+      //     await box.write('userstate', false);
+
+      //     Navigator.of(context).pushNamedAndRemoveUntil(
+      //         '/handymainpage', (Route<dynamic> route) => false);
+      //   } else {
+      //     await box.write('userstate', true);
+
+      //     Navigator.of(context).pushNamedAndRemoveUntil(
+      //         '/jobRequest', (Route<dynamic> route) => false);
+      //   }
     } else {
       //An error occured
       alerts.user_toast("Invalid Credentials");
@@ -60,6 +97,7 @@ class NUser {
       alerts.user_toast("Error: " + errMsg.toString());
     }))
         .user;
+    signout();
     if (_FirebaseUser != null) {
 //User is created
 //Save User data into database
@@ -69,11 +107,12 @@ class NUser {
         "sname": sname.trim(),
         "email": email.trim(),
         "phone": phone.trim(),
-        "gender": gender.trim()
+        "gender": gender.trim(),
+        "user": "true"
       };
       await usersRef.child(_FirebaseUser.uid).set(userData);
       alerts.user_toast("Account Created Successfully");
-      Navigator.of(context).pushNamed('/login_page');
+      Navigator.of(context).pop();
     } else {
 //An error occured
       alerts.user_toast("Unable to create new User");
@@ -81,7 +120,10 @@ class NUser {
   }
 
   signout() async {
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // prefs.remove('userstate');
     await FirebaseAuth.instance.signOut();
+    box.remove('userstate');
   }
 
   verifyPhone(String fname, String sname, String email, String phone,

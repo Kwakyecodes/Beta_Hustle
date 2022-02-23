@@ -50,9 +50,9 @@ class _HomePageState extends State<HomePage> {
                           print("Error on the way");
                           jobinfo.clear();
                           DataSnapshot dataValues = snapshot.data!.snapshot;
-                          Map<String, dynamic> values =
-                              Map<String, dynamic>.from(dataValues.value);
-                          if (values != null) {
+                          Map<String, dynamic> values = {};
+                          values = Map<String, dynamic>.from(dataValues.value);
+                          if (values.isNotEmpty || values.length != 0) {
                             values.forEach((key, values) {
                               jobinfo.add(values);
                             });
@@ -73,8 +73,10 @@ class _HomePageState extends State<HomePage> {
                                                 jobList[index].images[1])),
                                       ]);
                               });
+                        } else {
+                          return Text("list");
                         }
-                        return Text("list");
+                        return CircularProgressIndicator();
                       },
                     ),
                   ),

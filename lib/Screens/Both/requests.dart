@@ -136,7 +136,7 @@ class _RequestsState extends State<Requests> {
                 return ListView.builder(
                     padding: EdgeInsets.only(bottom: 55),
                     shrinkWrap: true,
-                    itemCount: jobinfo.length,
+                    itemCount: jobinfo == null ? 0 : jobinfo.length,
                     itemBuilder: (context, index) {
                       return containerContent(
                           jobinfo[index]["title"],

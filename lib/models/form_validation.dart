@@ -1,7 +1,5 @@
-import 'package:beta_hustle/models/text_editing_control.dart';
 import 'package:flutter/material.dart';
 
-import 'package:beta_hustle/Screens/Both/signup.dart';
 import 'package:beta_hustle/models/user.dart';
 import 'package:beta_hustle/notifications/alerts.dart';
 
@@ -23,13 +21,13 @@ class formValidate {
 
   final alerts = new Alerts();
   final user = new NUser();
-  login(BuildContext context, String email, String password) {
+  login(BuildContext context, String email, String password, bool userState) {
     if (!email.contains("@")) {
       alerts.user_toast("The email is invalid");
     } else if (password.length < 6) {
       alerts.user_toast("The password must be at least six characters");
     } else {
-      user.login(email, password, context);
+      user.login(email, password, context, userState);
     }
   }
 

@@ -1,9 +1,15 @@
 import 'package:beta_hustle/Screens/Both/requests.dart';
+import 'package:beta_hustle/models/db_ref.dart';
 import 'package:beta_hustle/models/job_descriptions.dart';
 
 import 'package:beta_hustle/Screens/Both/requestui.dart';
+import 'package:beta_hustle/models/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:provider/src/provider.dart';
 
 import 'handyman_page_content.dart';
 
@@ -29,8 +35,12 @@ class _HandyMainPageState extends State<HandyMainPage> {
   Color color5 = Colors.blueGrey;
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
   final List<Job> jobList = Job.getJob();
+  List userinfo = [];
   @override
   Widget build(BuildContext context) {
+    final NUser user = NUser();
+    final box = GetStorage();
+    final firebaseUser = context.watch<User>();
     return Scaffold(
       key: scaffoldKey,
       resizeToAvoidBottomInset: false,
@@ -57,21 +67,38 @@ class _HandyMainPageState extends State<HandyMainPage> {
                       SizedBox(
                         width: 16,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Profile Name",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 6.0,
-                          ),
-                          Text("Edit Profile"),
-                        ],
-                      )
+                      StreamBuilder(
+                          stream: usersRef.child(firebaseUser.uid).onValue,
+                          builder: (context, AsyncSnapshot<Event> snapshot) {
+                            if (snapshot.hasData) {
+                              userinfo.clear();
+                              DataSnapshot dataValues = snapshot.data!.snapshot;
+                              Map<dynamic, dynamic> values = dataValues.value;
+                              if (values != null) {
+                                values.forEach((key, values) {
+                                  userinfo.add(values);
+                                });
+                              }
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Welcome " +
+                                        userinfo[1] +
+                                        box.read('userstate').toString(),
+                                    style: TextStyle(
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 6.0,
+                                  ),
+                                  Text("Edit Profile"),
+                                ],
+                              );
+                            }
+                            return Text("User...");
+                          })
                     ],
                   ),
                 ),
@@ -124,7 +151,7 @@ class _HandyMainPageState extends State<HandyMainPage> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed('/loginPage');
+                  user.signout();
                 },
               )
             ],
