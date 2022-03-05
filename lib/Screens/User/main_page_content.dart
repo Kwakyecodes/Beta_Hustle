@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                       stream: jobsRef.child(firebaseUser.uid).onValue,
                       builder: (context, AsyncSnapshot<Event> snapshot) {
                         if (snapshot.hasData) {
-                          print("Error on the way");
+                          print("Data on the way");
                           jobinfo.clear();
                           DataSnapshot dataValues = snapshot.data!.snapshot;
                           Map<String, dynamic> values = {};
@@ -73,10 +73,12 @@ class _HomePageState extends State<HomePage> {
                                                 jobList[index].images[1])),
                                       ]);
                               });
+                        } else if (snapshot.hasError) {
+                          return Center(child: CircularProgressIndicator());
                         } else {
-                          return Text("list");
+                          Text("List...");
                         }
-                        return CircularProgressIndicator();
+                        return Center(child: CircularProgressIndicator());
                       },
                     ),
                   ),

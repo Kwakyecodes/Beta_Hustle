@@ -67,13 +67,16 @@ class _LoginPageState extends State<LoginPage> {
                           LiteRollingSwitch(
                             colorOn: Colors.blueGrey,
                             colorOff: Color(0XFF6A62B7),
-                            value: true,
+                            value: loginState,
                             textOn: "User",
                             iconOn: Icons.account_circle_outlined,
                             textOff: "Handyman",
                             iconOff: Icons.attach_money,
                             onChanged: (bool state) {
-                              loginState = state;
+                              final stateset = WidgetsBinding.instance;
+                              stateset!.addPostFrameCallback((_) {
+                                loginState = state;
+                              });
 
                               print("$loginState");
                             },

@@ -1,14 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:telephony/telephony.dart';
 
-import 'package:beta_hustle/Screens/Both/login_page.dart';
-import 'package:beta_hustle/main.dart';
 import 'package:beta_hustle/models/db_ref.dart';
 import 'package:beta_hustle/notifications/alerts.dart';
 
@@ -25,9 +23,11 @@ class NUser {
   final alerts = new Alerts();
   final box = GetStorage();
   String username = "";
+
+  //LOGIN METHOD
   login(String email, String password, BuildContext context,
       bool userStatus) async {
-    //SharedPreferences prefs = await SharedPreferences.getInstance();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final User? _FirebaseUser = (await _auth
             .signInWithEmailAndPassword(email: email, password: password)
@@ -41,22 +41,22 @@ class NUser {
       DataSnapshot snapshot = await usersRef
           .orderByChild('${_FirebaseUser.uid}/user')
           .equalTo(false)
-          .get();
+          .once();
 
       print("Value::");
       print(snapshot.exists);
       print("state");
       print(userStatus.toString());
       if (snapshot.exists == true && userStatus == false) {
-        await box.write('userstate', false);
+        await prefs.setBool('userstate', false);
 
-        // Navigator.of(context).pushNamedAndRemoveUntil(
-        //     '/handymainpage', (Route<dynamic> route) => false);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/handymainpage', (Route<dynamic> route) => false);
       } else {
-        await box.write('userstate', true);
+        await prefs.setBool('userstate', true);
 
-        // Navigator.of(context).pushNamedAndRemoveUntil(
-        //     '/jobRequest', (Route<dynamic> route) => false);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            '/jobRequest', (Route<dynamic> route) => false);
       }
 
       //   print("Value::");
@@ -78,6 +78,7 @@ class NUser {
     }
   }
 
+  //SIGNUP METHOD
   signUp(String fname, String sname, String email, String phone,
       String password, BuildContext context, String gender) async {
     // try {
@@ -123,9 +124,11 @@ class NUser {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // prefs.remove('userstate');
     await FirebaseAuth.instance.signOut();
-    box.remove('userstate');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('userstate');
   }
 
+//VERIFICATION OF PHONE
   verifyPhone(String fname, String sname, String email, String phone,
       String password, BuildContext context, String gender, int otpCode) async {
     String message =
