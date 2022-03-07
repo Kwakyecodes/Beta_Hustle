@@ -32,6 +32,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "cloud_firestore",
+      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-3.1.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_platform_interface-5.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-2.6.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "collection",
       "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0",
       "packageUri": "lib/",
@@ -105,15 +123,15 @@
     },
     {
       "name": "firebase_core_platform_interface",
-      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.2.3",
+      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-4.2.5",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.16"
     },
     {
       "name": "firebase_core_web",
-      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.5.3",
+      "rootUri": "file:///E:/applications/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.16"
     },
     {
       "name": "firebase_database",
@@ -512,7 +530,7 @@
       "languageVersion": "2.13"
     }
   ],
-  "generated": "2022-03-06T00:23:45.883125Z",
+  "generated": "2022-03-07T21:29:00.994012Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
