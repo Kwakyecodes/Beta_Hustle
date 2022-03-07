@@ -41,7 +41,7 @@ class NUser {
       DataSnapshot snapshot = await usersRef
           .orderByChild('${_FirebaseUser.uid}/user')
           .equalTo(false)
-          .get();
+          .once();
 
       print("Value::");
       print(snapshot.exists);

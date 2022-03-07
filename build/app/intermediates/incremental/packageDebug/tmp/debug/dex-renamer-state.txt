@@ -1,4 +1,7 @@
-#Wed Feb 23 10:26:52 UTC 2022
-base.0=C\:\\Users\\hp\\Desktop\\beta_hustle\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Sat Mar 05 17:19:30 PST 2022
+base.1=E\:\\projects\\Beta_Hustle\\Beta_Hustle\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+path.1=classes2.dex
+base.0=E\:\\projects\\Beta_Hustle\\Beta_Hustle\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex
