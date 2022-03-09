@@ -21,7 +21,28 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\Agbesi Jerry\\.gradle\\caches\\transforms-3\\271dd2b34353086018d9279a22a9a729\\transformed\\jetified-play-services-basement-17.1.0\\res\\values-ja\\values.xml",
+=======
+                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\29041a8c3df8d91718d6cce7a731f334\\transformed\\core-1.6.0\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "2553",
+                        "endColumns": "100",
+                        "endOffsets": "2649"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\271dd2b34353086018d9279a22a9a729\\transformed\\jetified-play-services-basement-17.1.0\\res\\values-ja\\values.xml",
+>>>>>>> 81307b618cf3484787543c0db643413783c4d768
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -36,6 +57,7 @@
                         "endColumns": "180",
                         "endOffsets": "1359"
                     }
+<<<<<<< HEAD
                 },
                 {
                     "source": "C:\\Users\\Agbesi Jerry\\.gradle\\caches\\transforms-3\\edb597829f6687efa54551812db9b293\\transformed\\jetified-play-services-base-17.1.0\\res\\values-ja\\values.xml",
@@ -53,6 +75,8 @@
                         "endColumns": "105,165,121,107,190,121,134,127,192,102,163,120,178,149,89,88,99",
                         "endOffsets": "206,372,494,602,793,915,1050,1178,1552,1655,1819,1940,2119,2269,2359,2448,2548"
                     }
+=======
+>>>>>>> 81307b618cf3484787543c0db643413783c4d768
                 }
             ]
         }

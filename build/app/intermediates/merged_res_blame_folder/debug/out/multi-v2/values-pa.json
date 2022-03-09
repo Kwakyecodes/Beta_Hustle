@@ -21,7 +21,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\Agbesi Jerry\\.gradle\\caches\\transforms-3\\29041a8c3df8d91718d6cce7a731f334\\transformed\\core-1.6.0\\res\\values-pa\\values-pa.xml",
+=======
+                    "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-3\\29041a8c3df8d91718d6cce7a731f334\\transformed\\core-1.6.0\\res\\values-pa\\values-pa.xml",
+>>>>>>> 81307b618cf3484787543c0db643413783c4d768
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -10,8 +10,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/src/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'handyman_page_content.dart';
+
+bool userstate = true;
+Future<void> main() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  userstate = prefs.getBool('userstate')!;
+}
 
 class HandyMainPage extends StatefulWidget {
   const HandyMainPage({Key? key}) : super(key: key);
@@ -85,7 +92,7 @@ class _HandyMainPageState extends State<HandyMainPage> {
                                   Text(
                                     "Welcome " +
                                         userinfo[1] +
-                                        box.read('userstate').toString(),
+                                        userstate.toString(),
                                     style: TextStyle(
                                       fontSize: 16.0,
                                     ),

@@ -4,12 +4,17 @@
         "source": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+<<<<<<< HEAD
         "merged": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
         "source": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     },
     {
         "merged": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+=======
+        "merged": "C:\\Users\\hp\\Desktop\\beta_hustle\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\hp\\Desktop\\beta_hustle\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+>>>>>>> 81307b618cf3484787543c0db643413783c4d768
     },
     {
         "merged": "E:\\projects\\Beta_Hustle\\Beta_Hustle\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
