@@ -3,7 +3,6 @@ import 'package:beta_hustle/models/constants.dart';
 import 'package:beta_hustle/models/strings.dart';
 import 'package:beta_hustle/models/user.dart';
 import 'package:beta_hustle/notifications/alerts.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:beta_hustle/models/form_validation.dart';
