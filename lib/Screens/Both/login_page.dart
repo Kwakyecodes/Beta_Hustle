@@ -35,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -51,90 +50,6 @@ class _LoginPageState extends State<LoginPage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 //stops: [0.3,0.6]
-=======
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0XFFE5E5E5),
-                Color(0XFF6A62B7).withOpacity(0.6),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              //stops: [0.3,0.6]
-            ),
-          ),
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-
-            children: [
-              Container(
-                child: Stack(
-                  children: [
-                    Container(
-                      alignment: Alignment(1.0, 0.0),
-                      padding: EdgeInsets.only(top: 30, right: 5),
-                      child: Column(
-                        children: [
-                          LiteRollingSwitch(
-                            colorOn: Colors.blueGrey,
-                            colorOff: Color(0XFF6A62B7),
-                            value: loginState,
-                            textOn: "User",
-                            iconOn: Icons.account_circle_outlined,
-                            textOff: "Handyman",
-                            iconOff: Icons.attach_money,
-                            onChanged: (bool state) {
-                              final stateset = WidgetsBinding.instance;
-                              stateset!.addPostFrameCallback((_) {
-                                loginState = state;
-                              });
-
-                              print("$loginState");
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20.0, 90.0, 0.0, 0.0),
-                      child: Text(
-                        'Beta',
-                        style: TextStyle(
-                            color: Colors.blueGrey.shade900,
-                            fontSize: 60,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Lobster"),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(35.0, 150.0, 0.0, 0.0),
-                      child: Text(
-                        'Hustle',
-                        style: TextStyle(
-                            color: Colors.blueGrey.shade900,
-                            fontSize: 60,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Lobster"),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(180.0, 145.0, 0.0, 0.0),
-                      child: Text(
-                        '.',
-                        style: TextStyle(
-                            fontSize: 60,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0XFF6A62B7)),
-                      ),
-                    ),
-                  ],
-                ),
->>>>>>> 81307b618cf3484787543c0db643413783c4d768
               ),
             ),
             child: Column(
