@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:beta_hustle/models/user.dart';
 
 import 'package:telephony/telephony.dart';
 
@@ -23,6 +24,16 @@ class NUser {
   final alerts = new Alerts();
   final box = GetStorage();
   String username = "";
+
+  
+  // Map<String, dynamic> toJson(String fname,String sname,String email,String phone,String gender) => <String, dynamic>{
+  //           "full name": fname.trim(),
+  //           "sname": sname.trim(),
+  //           "email": email.trim(),
+  //           "phone": phone.trim(),
+  //           "gender": gender.trim(),
+  //           "user": "true"
+  //         };
 
   //LOGIN METHOD
   login(String email, String password, BuildContext context,
@@ -111,7 +122,11 @@ class NUser {
         "gender": gender.trim(),
         "user": "true"
       };
-      await usersRef.child(_FirebaseUser.uid).set(userData);
+
+      
+
+      // await usersColl.add(_FirebaseUser).;
+      usersRef.child(_FirebaseUser.uid).set(userData);
       alerts.user_toast("Account Created Successfully");
       Navigator.of(context).pop();
     } else {

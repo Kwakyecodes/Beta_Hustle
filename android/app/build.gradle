@@ -59,7 +59,6 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-appcheck-debug:16.0.0-beta01'
-<<<<<<< HEAD
     implementation 'com.android.support:multidex:2.0.1' //enter the latest multidex version
 }
 
@@ -68,7 +67,4 @@ android {
         multiDexEnabled true
     }
 
-=======
-     implementation 'com.android.support:multidex:1.0.3'
->>>>>>> 81307b618cf3484787543c0db643413783c4d768
 }
